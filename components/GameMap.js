@@ -63,19 +63,14 @@ export default function GameMap() {
           'x' : event.clientX / canvas.width * squares_on_screen,
           'y' : event.clientY / canvas.height * squares_on_screen};
 
-        squares_on_screen++;  
-        target.x -= diff.x * squares_on_screen;
-        target.y -= diff.y * squares_on_screen;
+        squares_on_screen++;
       } else{
         if(squares_on_screen != 1){
           const diff = {
             'x' : event.clientX / canvas.width * squares_on_screen,
             'y' : event.clientY / canvas.height * squares_on_screen};
+
           squares_on_screen--;
-
-          target.x += diff.x * squares_on_screen;
-          target.y += diff.y * squares_on_screen;
-
         }
       }
       event.preventDefault();
@@ -111,8 +106,8 @@ export default function GameMap() {
 
       for(const village of villages){
         context.drawImage(village_sprite,
-          (target.x + village.x) * square_width,
-          (target.y + village.y) * square_height, 
+          (target.x + village.x) * square_width + canvas.width / 2,
+          (target.y + village.y) * square_height + canvas.height / 2, 
           square_width, square_height);
       }
       requestAnimationFrame(draw_villages);
