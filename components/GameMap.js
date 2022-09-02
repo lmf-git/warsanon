@@ -49,14 +49,14 @@ export default function GameMap() {
     const villages = [{'x' : -1, 'y' : -1}, {'x' : 1, 'y' : 1}, {'x' : 2, 'y' : 2}];
 
     window.addEventListener('resize', resize);
-    var squares_on_screen = 5;
+    let squares_on_screen = 5;
     
-    var clicked = false;
-    var target = {'x' : 0, 'y' : 0};
+    let clicked = false;
+    let target = {'x' : 0, 'y' : 0};
 
     draw_villages();
   
-    canvas.addEventListener('wheel', function(event){
+    canvas.addEventListener('wheel', (event) => {
       console.log('wheel');
       if(event.deltaY > 0){
         const diff = {
@@ -76,20 +76,20 @@ export default function GameMap() {
       event.preventDefault();
     });
 
-    canvas.addEventListener('mousedown', function(event){
+    canvas.addEventListener('mousedown', (event) => {
       console.log("down");
       console.log("x: " + event.clientX);
       clicked = true;
       event.preventDefault();
     });
 
-    canvas.addEventListener('mouseup', function(event){
+    canvas.addEventListener('mouseup', (event) => {
       console.log("release");
       clicked = false;
       event.preventDefault();
     });
 
-    canvas.addEventListener('mousemove', function(event){
+    canvas.addEventListener('mousemove', (event) => {
       if(clicked){
         console.log("x: " + event.movementX + "\ny: " + event.movementY);
         target.x += event.movementX / canvas.width * squares_on_screen;
