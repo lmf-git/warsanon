@@ -73,7 +73,8 @@ export default function Map() {
                     data-y={cell.y}
                     style={{ backgroundImage: `url(${cell.biome_url})` }}
                     key={`map-row-${cell.y}-cell-${cell.x}`}>
-                      <img width="100%" src="/logo.png" />
+                      <img width="100%" src={cell.village_url} />
+
                       {/* {cell.x} | {cell.y} */}
                   </td>
                 )
