@@ -70,7 +70,8 @@ export default function Map() {
                     data-x={cell.x}
                     data-y={cell.y}
                     key={`map-row-${rowIndex}-cell-${cellIndex}`}>
-                    {cell.x} | {cell.y}
+                      <img width="25" src="/logo.png" />
+                      {cell.x} | {cell.y}
                   </td>
                 )
               }
