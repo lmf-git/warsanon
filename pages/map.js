@@ -57,7 +57,7 @@ export default function Map() {
       <title>Warsanon | Map</title>
     </Head>
 
-    <table id="map">
+    <table id="map" width="100%">
         <thead></thead>
         <tbody>
         { 
@@ -70,8 +70,8 @@ export default function Map() {
                     data-x={cell.x}
                     data-y={cell.y}
                     key={`map-row-${rowIndex}-cell-${cellIndex}`}>
-                      <img width="25" src="/logo.png" />
-                      {cell.x} | {cell.y}
+                      <img width="100%" src="/logo.png" />
+                      {/* {cell.x} | {cell.y} */}
                   </td>
                 )
               }
