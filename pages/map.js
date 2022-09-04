@@ -63,13 +63,16 @@ export default function Map() {
         { 
           visibleRows.map((row, rowIndex) => 
             <tr key={`map-row-${rowIndex}`}>
-              <td key={`map-row-help-${rowIndex}`}>i</td>
+              <td key={`map-row-help-${rowIndex}`}>
+                {row[0].y}
+              </td>
               {
-                row.map((cell, cellIndex) => 
+                row.map(cell => 
                   <td 
                     data-x={cell.x}
                     data-y={cell.y}
-                    key={`map-row-${rowIndex}-cell-${cellIndex}`}>
+                    style={{ backgroundImage: `url(${cell.biome_url})` }}
+                    key={`map-row-${cell.y}-cell-${cell.x}`}>
                       <img width="100%" src="/logo.png" />
                       {/* {cell.x} | {cell.y} */}
                   </td>

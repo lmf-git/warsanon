@@ -1,6 +1,8 @@
 
 <!-- TOC -->
 
+<!-- TODO: Make a wiki -->
+
 - [NEXT STEPS:](#next-steps)
 - [INFO / DATA](#info--data)
     - [BATTLE DATA](#battle-data)
