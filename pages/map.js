@@ -1,26 +1,36 @@
 import Head from 'next/head';
+import { useEffect, useMemo, useState } from "react";
 
 import { setup } from "lib/map/controls";
-import { preload } from "lib/map/spriteHelper";
-import { load_tiles } from "lib/map/visual";
-import { useEffect, useState } from "react";
+import { draw_tiles, load_tiles } from "lib/map/visual";
 
-import mapStyles from '../styles/map.module.css';
+import MapConfig from '../lib/map/map';
 
 export default function Map() {
+  const [position, setPosition] = useState({ x: 500, y: 500 });
+  const [horizontalTileNum, setHorizontalTileNum] = useState(15);
   const [visibleRows, setVisibleRows] = useState([]);
 
+  // Share to rest of client.
+  MapConfig.viewport.horizontalTileNum = horizontalTileNum;
+  MapConfig.viewport.setHorizontalTileNum = setHorizontalTileNum;
+  MapConfig.viewport.position = position;
+  MapConfig.viewport.setPosition = setPosition;
+
+  useEffect(() => {
+    // console.log('Re-render');
+
+    // Draw foundational tiles separte from player and tile state data.
+    const rows = draw_tiles(position);
+    setVisibleRows([...rows]);
+
+  }, [position.x, position.y, horizontalTileNum]);
+  
   useEffect(() => {
     // Asynchronous loader, releasing to controls.
     const load = async () => {
-      // TODO: Split drawing the tiles/grid when browser loads page from loading player data/tile specific data itself.
-      // Draw tiles
-      
-      // Preload sprites.
-      await preload();
-
-      // Draw initial set of tiles.
-      await load_tiles(setVisibleRows);
+      // Load the player and tile state data.
+      // await load_tiles(setVisibleRows);
 
       // Attach controls for desktop, and resize initially.
       setup();
@@ -31,18 +41,24 @@ export default function Map() {
       // Remove the event listeners
       // Remove the firebase listeners
     }
-  });
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const newPosition = { x: 505, y: 505 };
+
+      // Test updating position
+      setPosition(newPosition);
+    }, 2000);
+  }, []);
 
   return <>
     <Head>
       <title>Warsanon | Map</title>
     </Head>
 
-    <div id="map" className={mapStyles.map}>
-      <table className={mapStyles.map}>
-        <thead>
-
-        </thead>
+    <table id="map">
+        <thead></thead>
         <tbody>
         { 
           visibleRows.map((row, rowIndex) => 
@@ -50,7 +66,10 @@ export default function Map() {
               <td key={`map-row-help-${rowIndex}`}>i</td>
               {
                 row.map((cell, cellIndex) => 
-                  <td key={`map-row-${rowIndex}-cell-${cellIndex}`}>
+                  <td 
+                    data-x={cell.x}
+                    data-y={cell.y}
+                    key={`map-row-${rowIndex}-cell-${cellIndex}`}>
                     {cell.x} | {cell.y}
                   </td>
                 )
@@ -60,6 +79,5 @@ export default function Map() {
         }
         </tbody>
       </table>
-    </div>
   </>
 }

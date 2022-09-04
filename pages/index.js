@@ -9,8 +9,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <p>Warsanon</p>
-      <Link href="/map">Map</Link>
+      <div style={{ padding: '1em' }}>
+        <p>Warsanon</p>
+        <Link href="/map">Map</Link>
+      </div>
+
       <img width="300" src="https://cdn.discordapp.com/attachments/942925848258940941/980950028929601596/4FB7E5FB-C3BE-4401-8B1F-2E980445038A-2.jpg" />
     </>
   )
