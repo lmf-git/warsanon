@@ -8,8 +8,11 @@
     "export": "next export"
   },
   "dependencies": {
+    "firebase": "^9.9.4",
+    "firebaseui": "^6.0.1",
     "next": "^12.1.5",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-firebaseui": "^6.0.0"
   }
 }

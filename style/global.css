@@ -2,12 +2,3 @@ html, body {
     margin: 0;
     background: silver;
 }
-
-td {
-    opacity: 1;
-    transition: opacity .3s ease;
-    cursor: pointer;
-}
-td:hover {
-    opacity: .6;
-}

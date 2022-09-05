@@ -2,13 +2,15 @@ import Head from 'next/head';
 import { useEffect, useMemo, useState } from "react";
 
 import { setup } from "lib/map/controls";
-import { draw_tiles, load_tiles } from "lib/map/visual";
+import { drawTiles, load_tiles } from "lib/map/visual";
 
 import MapConfig from '../lib/map/map';
+import Map from '@components/Map';
+import Minimap from '@components/Minimap';
 
-export default function Map() {
+export default function MapPage() {
   const [position, setPosition] = useState({ x: 500, y: 500 });
-  const [horizontalTileNum, setHorizontalTileNum] = useState(15);
+  const [horizontalTileNum, setHorizontalTileNum] = useState(10);
   const [visibleRows, setVisibleRows] = useState([]);
 
   // Share to rest of client.
@@ -17,31 +19,10 @@ export default function Map() {
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
 
-  useEffect(() => {
-    // console.log('Re-render');
-
-    // Draw foundational tiles separte from player and tile state data.
-    const rows = draw_tiles(position);
-    setVisibleRows([...rows]);
-
-  }, [position.x, position.y, horizontalTileNum]);
-  
-  useEffect(() => {
-    // Asynchronous loader, releasing to controls.
-    const load = async () => {
-      // Load the player and tile state data.
-      // await load_tiles(setVisibleRows);
-
-      // Attach controls for desktop, and resize initially.
-      setup();
-    };
-    load();
-
-    return function cleanup() {
-      // Remove the event listeners
-      // Remove the firebase listeners
-    }
-  }, []);
+  useEffect(
+    () => setVisibleRows(drawTiles(position)),
+   [position.x, position.y, horizontalTileNum]
+  );
 
   useEffect(() => {
     setTimeout(() => {
@@ -56,33 +37,10 @@ export default function Map() {
     <Head>
       <title>Warsanon | Map</title>
     </Head>
-
-    <table id="map" width="100%">
-        <thead></thead>
-        <tbody>
-        { 
-          visibleRows.map((row, rowIndex) => 
-            <tr key={`map-row-${rowIndex}`}>
-              <td key={`map-row-help-${rowIndex}`}>
-                {row[0].y}
-              </td>
-              {
-                row.map(cell => 
-                  <td 
-                    data-x={cell.x}
-                    data-y={cell.y}
-                    style={{ backgroundImage: `url(${cell.biome_url})` }}
-                    key={`map-row-${cell.y}-cell-${cell.x}`}>
-                      <img width="100%" src={cell.village_url} />
-
-                      {/* {cell.x} | {cell.y} */}
-                  </td>
-                )
-              }
-            </tr>
-          ) 
-        }
-        </tbody>
-      </table>
+    
+    <div id="map-overview">
+      <Map visibleRows={visibleRows} />
+      <Minimap visibleRows={visibleRows} />
+    </div>
   </>
 }
