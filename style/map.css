@@ -1,0 +1,39 @@
+#map-overview {
+    display: flex;
+}
+
+#map {
+    width: 60%;
+    position: relative;
+}
+
+#minimap {
+    width: 10%;
+    position: relative;
+}
+
+#map tfoot {
+
+}
+
+.footer-label-row {
+    transform: translateY(-1.35em);
+}
+
+.footer-label {
+    float: right;
+}
+
+td {
+    opacity: 1;
+    transition: opacity .3s ease;
+    cursor: pointer;
+}
+td:hover {
+    opacity: .6;
+}
+
+tr td:first-child {
+    position: absolute;
+    left: .5em;
+}
