@@ -5,8 +5,10 @@ import { setup } from "lib/map/controls";
 import { drawTiles, load_tiles } from "lib/map/visual";
 
 import MapConfig from '../lib/map/map';
-import Map from '@components/Map';
-import Minimap from '@components/Minimap';
+import Map from '@components/Map/Map';
+import Minimap from '@components/Minimap/Minimap';
+
+import styles from '@components/Map/Map.module.css';
 
 export default function MapPage() {
   const [position, setPosition] = useState({ x: 500, y: 500 });
@@ -37,10 +39,19 @@ export default function MapPage() {
     <Head>
       <title>Warsanon | Map</title>
     </Head>
+
+    <div className={styles['map-branding']}>
+      <img className={styles['map-branding-logo']} src="/logo.png" />
+    </div>
     
-    <div id="map-overview">
-      <Map visibleRows={visibleRows} />
-      <Minimap visibleRows={visibleRows} />
+    <div className={styles['map-overview']}>
+      <div className={styles['terrain']}>
+        <Map visibleRows={visibleRows} />
+        <Minimap visibleRows={visibleRows} />
+      </div>
+      <div className={styles['sidebar']}>
+        Test
+      </div>
     </div>
   </>
 }

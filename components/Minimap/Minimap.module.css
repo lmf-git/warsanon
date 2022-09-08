@@ -1,0 +1,7 @@
+.minimap {
+    width: 25em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 2px solid black;
+}

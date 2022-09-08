@@ -16,7 +16,7 @@ export default function Home() {
         <Link href="/login">Login (DEV ONLY)</Link>
       </div>
 
-      <img width="300" src="https://cdn.discordapp.com/attachments/942925848258940941/980950028929601596/4FB7E5FB-C3BE-4401-8B1F-2E980445038A-2.jpg" />
+      <img width="150" src="/logo.png" />
     </>
   )
 }
