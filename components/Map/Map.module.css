@@ -1,5 +1,10 @@
 .map-fullheight {
     height: 100%;
+    margin: 0;
+}
+
+.map-window {
+    background: #1e1e1e;
 }
 
 .map-branding {
@@ -31,6 +36,8 @@
     margin: 0.5em;
     box-sizing: content-box;
     border-radius: 0.5em;
+    border: 0.25em solid #c7c7c7;
+    border-bottom-width: 0.5em;
 }
 
 .map {

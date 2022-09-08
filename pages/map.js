@@ -25,6 +25,9 @@ export default function MapPage() {
 
   useEffect(
     () => {
+      // ...
+      document.documentElement.classList.add(styles['map-window']);
+
       // Add map-fullheight class to html and body
       [document.body, document.documentElement, document.querySelector('#__next')]
         .map(el => el.classList.add(styles['map-fullheight']));
