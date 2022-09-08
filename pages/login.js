@@ -23,8 +23,7 @@ const uiConfig = {
 
   // We will display Google and Facebook as auth providers.
   signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    firebase.auth.PhoneAuthProvider.PROVIDER_ID
   ],
 };
 
@@ -33,6 +32,8 @@ function Login() {
   // It will help to explain why it is demanding a phone number.
 
   return <Layout>
+    <h1>Login</h1>
+    <p style={{ maxWidth: '25em' }}>We use phone numbers to restrict one person to one account in our game to maximise fairness and competitivity in our game, accounts that seem to violate this will be terminated.</p>
     <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
   </Layout>;
 }
