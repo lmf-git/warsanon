@@ -9,13 +9,13 @@
 
 .map-branding {
     position: absolute;
-    top: 0.5em;
-    left: 0.5em;
+    top: 1em;
+    left: 1em;
     z-index: 2;
 }
 
 .map-branding-logo {
-    width: 3.25em;
+    width: 4em;
 }
 
 .map-overview {

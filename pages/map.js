@@ -9,6 +9,7 @@ import Map from '@components/Map/Map';
 import Minimap from '@components/Minimap/Minimap';
 
 import styles from '@components/Map/Map.module.css';
+import Link from 'next/link';
 
 export default function MapPage() {
   const [position, setPosition] = useState({ x: 500, y: 500 });
@@ -33,6 +34,17 @@ export default function MapPage() {
         .map(el => el.classList.add(styles['map-fullheight']));
 
       setVisibleRows(drawTiles(position))
+
+
+      return function cleanup() {
+        // ...
+        document.documentElement.classList.remove(styles['map-window']);
+
+        // remove map-fullheight class to html and body
+        [document.body, document.documentElement, document.querySelector('#__next')]
+          .map(el => el.classList.remove(styles['map-fullheight']));
+
+      }
     },
    [position.x, position.y, horizontalTileNum]
   );
@@ -55,7 +67,11 @@ export default function MapPage() {
     </Head>
 
     <div className={styles['map-branding']}>
-      <img className={styles['map-branding-logo']} src="/logo.png" />
+      <Link href="/worlds">
+        <a className={styles['map-logo-link']}>
+          <img className={styles['map-branding-logo']} src="/logo.png" />
+        </a>
+      </Link>
     </div>
     
     <div className={styles['map-overview']}>
