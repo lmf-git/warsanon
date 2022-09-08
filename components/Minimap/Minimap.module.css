@@ -1,7 +1,12 @@
 .minimap {
     width: 25em;
+
     position: absolute;
     top: 0;
     right: 0;
-    border: 2px solid black;
+
+    background: #1095d2;
+    border-radius: 0 0 0 1em;
+    border: 0.2em solid #0387c4;
 }
+

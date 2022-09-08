@@ -15,6 +15,8 @@ export default function MapPage() {
   const [horizontalTileNum, setHorizontalTileNum] = useState(10);
   const [visibleRows, setVisibleRows] = useState([]);
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   // Share to rest of client.
   MapConfig.viewport.horizontalTileNum = horizontalTileNum;
   MapConfig.viewport.setHorizontalTileNum = setHorizontalTileNum;
@@ -22,7 +24,13 @@ export default function MapPage() {
   MapConfig.viewport.setPosition = setPosition;
 
   useEffect(
-    () => setVisibleRows(drawTiles(position)),
+    () => {
+      // Add map-fullheight class to html and body
+      [document.body, document.documentElement, document.querySelector('#__next')]
+        .map(el => el.classList.add(styles['map-fullheight']));
+
+      setVisibleRows(drawTiles(position))
+    },
    [position.x, position.y, horizontalTileNum]
   );
 
@@ -32,6 +40,9 @@ export default function MapPage() {
 
       // Test updating position
       setPosition(newPosition);
+
+      // Dev
+      setSidebarOpen(true);
     }, 2000);
   }, []);
 
@@ -49,9 +60,11 @@ export default function MapPage() {
         <Map visibleRows={visibleRows} />
         <Minimap visibleRows={visibleRows} />
       </div>
-      <div className={styles['sidebar']}>
-        Test
-      </div>
+      { !sidebarOpen ? null :
+        <div className={styles['sidebar']}>
+          Test
+        </div>
+      }
     </div>
   </>
 }

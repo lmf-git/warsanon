@@ -9,14 +9,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div style={{ padding: '1em' }}>
+      <img src="/logo.png" />
+
+      <div>
         <p>Warsanon</p>
         <Link href="/map">Map</Link>
         <br />
         <Link href="/login">Login (DEV ONLY)</Link>
       </div>
-
-      <img width="150" src="/logo.png" />
     </>
   )
 }

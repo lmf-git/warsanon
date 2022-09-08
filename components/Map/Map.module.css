@@ -1,34 +1,40 @@
+.map-fullheight {
+    height: 100%;
+}
+
 .map-branding {
     position: absolute;
-    top: .25em;
-    right: 0;
-    left: 0;
-    text-align: center;
+    top: 0.5em;
+    left: 0.5em;
     z-index: 2;
 }
 
 .map-branding-logo {
-    width: 2.25em;
+    width: 3.25em;
 }
 
 .map-overview {
-    margin-top: 1.125em;
-    z-index: 1;
-
     display: flex;
+    height: 100%;
+    z-index: 1;
 }
 
 .terrain {
-    position: relative;
     flex: auto;
+    position: relative;
+    overflow: hidden;
 }
 
 .sidebar {
     flex: 30% 0;
+    background: #8b0a0c;
+    margin: 0.5em;
+    box-sizing: content-box;
+    border-radius: 0.5em;
 }
 
 .map {
+    height: 100%;
     width: 100%;
-    border: 2px solid black;
     box-sizing: border-box;
 }
