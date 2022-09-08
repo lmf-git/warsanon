@@ -1,0 +1,51 @@
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.branding {
+    display: flex;
+    align-items: center;
+}
+
+.branding-title {
+    margin: 0;
+    color: #cb0e10;
+}
+.branding-slogan {
+    margin: 0;
+    color: #b9b9b9;
+}
+
+.logo {
+    width: 4em;
+    margin-right: .75em;
+}
+
+.header-actions {
+    display: flex;
+    margin-left: auto;
+}
+
+.header-actions-item {
+    padding: 0.35em 1.35em;
+    margin-right: 1em;
+    font-size: 1.25em;
+    
+    color: #cb0e10;
+    background: #b8b9b9;
+    text-decoration: none;
+    border-radius: 0.4em;
+
+    transition: opacity .25s;
+
+    font-weight: 900;
+
+    background: #068ecc;
+    color: #b8b9b9;
+    border: 0.25em solid #b8b9b9;
+}
+
+.header-actions-item:hover {
+    opacity: .75;
+}
