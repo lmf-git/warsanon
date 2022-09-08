@@ -9,6 +9,9 @@ import styles from './Minimap.module.css';
 export default function Minimap({ visibleRows }) {
     useEffect(() => {
         const view = document.querySelector('#minimap');
+        if (window.safari !== undefined)
+          PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
+
         const engine = new PIXI.Application({ view });
 
         // load the texture we need

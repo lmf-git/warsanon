@@ -8,6 +8,9 @@ import styles from '@components/Map/Map.module.css';
 export default function Map({ visibleRows }) {
     useEffect(() => {
         const view = document.querySelector('#map');
+        if (window.safari !== undefined)
+          PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
+          
         const engine = new PIXI.Application({ view });
 
         // load the texture we need
