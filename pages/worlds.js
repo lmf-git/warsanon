@@ -1,22 +1,18 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 
-// Official wrapper from Firebase organiastion to bundle style into app.
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-
 import firebaseConfig from 'firebaseConfig';
+import Layout from '@components/Layout/Layout';
 
 firebase.initializeApp(firebaseConfig);
 
-function Worlds() {
+export default function Worlds() {
   // Text at the top, stating purpose - you are logging in to play the game, world, username, etc.
   // It will help to explain why it is demanding a phone number.
 
   return (
-    <div>
+    <Layout>
       <h1>Worlds</h1>
-    </div>
+    </Layout>
   );
 }
-
-export default Worlds;
