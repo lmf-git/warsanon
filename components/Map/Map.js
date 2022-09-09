@@ -40,15 +40,20 @@ export default function Map({ visibleRows }) {
 
             // Listen for frame updates
             engine.ticker.add(() => {
-                bunny.x = (map.viewport.position.x + 0.5) * engine.renderer.width;
-                bunny.y = (map.viewport.position.y + 0.5) * engine.renderer.height;
+                bunny.x = (map.viewport.position.x + map.viewport.width / 2) / map.viewport.width * engine.renderer.width;
+                bunny.y = (map.viewport.position.y + map.viewport.width / 2) / map.viewport.width * engine.renderer.height;
+                bunny.width = engine.renderer.width / map.viewport.width;
+                bunny.height = engine.renderer.height/ map.viewport.width;
                 // each frame we spin the bunny around a bit
-                bunny.rotation += 0.01;
             });
         };
+        
         load();
-
         setup();
+
+        //some placeholder villages
+        
+
     }, []);
     return <canvas id="map" className={styles.map} />
 }
