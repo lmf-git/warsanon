@@ -23,7 +23,11 @@ const uiConfig = {
 
   // We will display Google and Facebook as auth providers.
   signInOptions: [
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+
+
+    // Dev only
+    'anonymous'
   ],
 };
 
