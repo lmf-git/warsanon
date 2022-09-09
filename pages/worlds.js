@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { initializeApp } from 'firebase/app';
 import { child, get, getDatabase, ref } from 'firebase/database';
 
 import WorldManager from 'lib/worldManager';
-import firebaseConfig from 'firebaseConfig';
 
 import Layout from '@components/Layout/Layout';
 
-initializeApp(firebaseConfig);
+
 
 export default function Worlds() {
   const [worlds, setWorlds] = useState([])
@@ -16,7 +14,6 @@ export default function Worlds() {
 
   useEffect(() => {
     const load = async () => {
-      initializeApp(firebaseConfig);
       const dbRef = ref(getDatabase());
       const snapshot = await get(child(dbRef, `worlds`));
       setWorlds(snapshot.val())

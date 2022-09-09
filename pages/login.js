@@ -10,8 +10,6 @@ import Layout from '@components/Layout/Layout';
 
 import styles from '@components/Home/Home.module.css';
 
-firebase.initializeApp(firebaseConfig);
-
 // Configure FirebaseUI.
 const uiConfig = {
   // Popup signin flow rather than redirect flow.

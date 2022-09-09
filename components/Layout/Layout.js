@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import firebaseConfig from 'firebaseConfig';
-import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import styles from '@components/Home/Home.module.css';
@@ -10,7 +9,6 @@ import styles from '@components/Home/Home.module.css';
 export default function Layout({ children, showActions = true }) {
     const [user, setUser] = useState(null);
     
-    initializeApp(firebaseConfig);
     useEffect(() => {
         const listener = onAuthStateChanged(getAuth(),  user => setUser(user));
         return () => listener();
