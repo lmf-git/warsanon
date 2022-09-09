@@ -8,9 +8,12 @@
     "export": "next export"
   },
   "dependencies": {
+    "@pixi/assets": "^6.5.2",
+    "@pixi/basis": "^6.5.2",
     "firebase": "^9.9.4",
     "firebaseui": "^6.0.1",
     "next": "^12.1.5",
+    "pixi.js": "^6.5.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-firebaseui": "^6.0.0"

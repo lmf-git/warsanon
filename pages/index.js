@@ -1,22 +1,39 @@
 import Head from 'next/head';
-import Link from 'next/link';
+
+import Layout from '@components/Layout/Layout';
+import styles from '@components/Home/Home.module.css';
+
 
 export default function Home() {
+
+  // TODO: Check if logged in, in the layout to dictate buttons
+
   return (
-    <>
+    <Layout>
       <Head>
         <title>Warsanon | Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div style={{ padding: '1em' }}>
-        <p>Warsanon</p>
-        <Link href="/map">Map</Link>
-        <br />
-        <Link href="/login">Login (DEV ONLY)</Link>
+      <div className={[styles.roadmap, 'panel'].join(' ')}>
+        <h2>News</h2>
+        <ul>
+          <li>Login</li>
+        </ul>
       </div>
 
-      <img width="300" src="https://cdn.discordapp.com/attachments/942925848258940941/980950028929601596/4FB7E5FB-C3BE-4401-8B1F-2E980445038A-2.jpg" />
-    </>
+      <div className={[styles.roadmap, 'panel'].join(' ')}>
+        <h2>Roadmap</h2>
+        <ul>
+          <li><s>Login</s></li>
+          <li>World select </li>
+          <li>Position</li>
+          <li>Dying</li>
+        </ul>
+      </div>
+    </Layout>
   )
 }
+
+
+

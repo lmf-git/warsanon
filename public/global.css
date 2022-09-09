@@ -1,0 +1,17 @@
+html, body {
+    font-family: 'Merriweather', serif;
+    background: rgb(45, 45, 45);
+}
+
+
+h2 {
+    color: red;
+}
+ul {
+    color: silver;
+}
+
+.panel {
+    padding: .5em;
+    margin-bottom: 1em;
+}

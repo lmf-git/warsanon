@@ -1,0 +1,47 @@
+.map-fullheight {
+    height: 100%;
+    margin: 0;
+}
+
+.map-window {
+    background: #1e1e1e;
+}
+
+.map-branding {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 2;
+}
+
+.map-branding-logo {
+    width: 4em;
+}
+
+.map-overview {
+    display: flex;
+    height: 100%;
+    z-index: 1;
+}
+
+.terrain {
+    flex: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar {
+    flex: 30% 0;
+    background: #8b0a0c;
+    margin: 0.5em;
+    box-sizing: content-box;
+    border-radius: 0.5em;
+    border: 0.25em solid #c7c7c7;
+    border-bottom-width: 0.5em;
+}
+
+.map {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}

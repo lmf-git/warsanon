@@ -1,9 +1,5 @@
-// import App from 'next/app'
-import '../style/global.css';
+import '../public/global.css';
 
-// Include map temporarily for lazy dev.
-import '../style/map.css';
-
-export default function Application({ Component, pageProps }) {
-    return <Component {...pageProps} />
-}
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />
+};
