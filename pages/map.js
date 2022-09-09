@@ -11,7 +11,7 @@ import styles from '@components/Map/Map.module.css';
 import Link from 'next/link';
 
 export default function MapPage() {
-  const [position, setPosition] = useState({ x: 500, y: 500 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [horizontalTileNum, setHorizontalTileNum] = useState(10);
   const [visibleRows, setVisibleRows] = useState([]);
 
@@ -50,10 +50,10 @@ export default function MapPage() {
 
   useEffect(() => {
     setTimeout(() => {
-      const newPosition = { x: 505, y: 505 };
+      //const newPosition = { x: 505, y: 505 };
 
       // Test updating position
-      setPosition(newPosition);
+      //setPosition(newPosition);
 
       // Dev
       setSidebarOpen(true);

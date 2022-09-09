@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js';
 
 import MapConfig from 'lib/map/map';
 import { setup } from "lib/map/controls";
+import map from 'lib/map/map';
 
 import { useEffect } from "react";
 
@@ -39,6 +40,8 @@ export default function Map({ visibleRows }) {
 
             // Listen for frame updates
             engine.ticker.add(() => {
+                bunny.x = (map.viewport.position.x + 0.5) * engine.renderer.width;
+                bunny.y = (map.viewport.position.y + 0.5) * engine.renderer.height;
                 // each frame we spin the bunny around a bit
                 bunny.rotation += 0.01;
             });
