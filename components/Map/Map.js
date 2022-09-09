@@ -1,6 +1,8 @@
 import * as PIXI from 'pixi.js';
 
+import MapConfig from 'lib/map/map';
 import { setup } from "lib/map/controls";
+
 import { useEffect } from "react";
 
 import { Assets } from '@pixi/assets';
@@ -14,6 +16,8 @@ export default function Map({ visibleRows }) {
           PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
 
         const engine = new PIXI.Application({ view });
+
+        MapConfig.pixi = engine;
 
         // Import assets
         // Assets 
