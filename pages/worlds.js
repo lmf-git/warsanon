@@ -1,16 +1,18 @@
-import firebase from 'firebase/compat/app';
-
-import firebaseConfig from 'firebaseConfig';
-import Layout from '@components/Layout/Layout';
-import { initializeApp } from 'firebase/app';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { initializeApp } from 'firebase/app';
 import { child, get, getDatabase, ref } from 'firebase/database';
 
-firebase.initializeApp(firebaseConfig);
+import WorldManager from 'lib/worldManager';
+import firebaseConfig from 'firebaseConfig';
+
+import Layout from '@components/Layout/Layout';
+
+initializeApp(firebaseConfig);
 
 export default function Worlds() {
-
   const [worlds, setWorlds] = useState([])
+  const router = useRouter();
 
   useEffect(() => {
     const load = async () => {
@@ -25,17 +27,26 @@ export default function Worlds() {
   return (
     <Layout showActions={false}>
       <h1>Worlds</h1>
-
       <div>
         { 
-          worlds.map((w, wI) => 
+          worlds.map(w => 
             <div 
               onClick={() => {
-                console.log('Set current world');
-                localStorage.setItem('currentWorld', w.code);
+                WorldManager.set(w.code);
+                router.push('/map');
               }}
               key={`w-${w.code}`}>
               { w.name }
+
+              {/* Generate image for the world */}
+              {/* <img src="" /> */}
+
+              <button>
+                Register
+              </button>
+              <button>
+                Play
+              </button>
             </div>
           )
         }

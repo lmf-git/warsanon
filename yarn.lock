@@ -486,6 +486,16 @@
   resolved "https://registry.yarnpkg.com/@pixi/app/-/app-6.5.2.tgz#bade3b4deee6fad71f8523fddfee99abbf73bbfe"
   integrity sha512-y/d+d9M668fa2ztY16C6xkiYACqZu59f6FOkaIzqClwRz7Ws7xGe6llFUa5d3vN/J/O1l4SyPOlPFjSflj3aOg==
 
+"@pixi/assets@^6.5.2":
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/@pixi/assets/-/assets-6.5.2.tgz#9ebf43501535764cda823cea108e40c11b90f9ea"
+  integrity sha512-E6+k6PC3gPRXL/OxwHaW3/jlpejZwvDbRsBY8lxzRbZK+Gcwu2bmlMZyaB6PsSdmBJoG5Yg6fkD/LCga6JQdkA==
+
+"@pixi/basis@^6.5.2":
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/@pixi/basis/-/basis-6.5.2.tgz#07479906aa03e35b436cc8ffcc503a066329e50a"
+  integrity sha512-FHR7E45KiJQVBrDVEawrauXbZF5uS59O+EjwKzpSCd5gr1maTjfZ7LH/q4uUWcWVS3h4AmpHkvQR+2rDZWsMGg==
+
 "@pixi/compressed-textures@6.5.2":
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/@pixi/compressed-textures/-/compressed-textures-6.5.2.tgz#33a94321b2b46c89a46b72ad632df2eb830fa05c"

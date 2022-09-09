@@ -3,6 +3,8 @@ import * as PIXI from 'pixi.js';
 import { setup } from "lib/map/controls";
 import { useEffect } from "react";
 
+import { Assets } from '@pixi/assets';
+
 import styles from '@components/Map/Map.module.css';
 
 export default function Map({ visibleRows }) {
@@ -13,10 +15,12 @@ export default function Map({ visibleRows }) {
 
         const engine = new PIXI.Application({ view });
 
-        // load the texture we need
-        engine.loader.add('bunny', 'logo.png').load((loader, resources) => {
-            // This creates a texture from a 'bunny.png' image
-            const bunny = new PIXI.Sprite(resources.bunny.texture);
+        // Import assets
+        // Assets 
+
+        const load = async () => {
+            const texture = await Assets.load('/logo.png');
+            const bunny = new PIXI.Sprite(texture);
 
             // Setup the position of the bunny
             bunny.x = engine.renderer.width / 2;
@@ -34,7 +38,8 @@ export default function Map({ visibleRows }) {
                 // each frame we spin the bunny around a bit
                 bunny.rotation += 0.01;
             });
-        });
+        };
+        load();
 
         setup();
     }, []);

@@ -6,7 +6,6 @@ import { drawTiles, load_tiles } from "lib/map/visual";
 
 import MapConfig from '../lib/map/map';
 import Map from '@components/Map/Map';
-import Minimap from '@components/Minimap/Minimap';
 
 import styles from '@components/Map/Map.module.css';
 import Link from 'next/link';
@@ -77,7 +76,6 @@ export default function MapPage() {
     <div className={styles['map-overview']}>
       <div className={styles['terrain']}>
         <Map visibleRows={visibleRows} />
-        <Minimap visibleRows={visibleRows} />
       </div>
       { !sidebarOpen ? null :
         <div className={styles['sidebar']}>
