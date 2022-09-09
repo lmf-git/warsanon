@@ -653,3 +653,177 @@ Premium only spawns, like Priffindas?
     Very useful to add into game or something like it
     https://d20md.com/
 
+
+
+
+
+
+
+notes Can see destroyed village and loot it or take over it How do battles work, how does attacking/defending work? What can be battled? What can be attacked or defended? How does travel work? Map height presets Max -> One and a half times total game width, pointless any bigger. Full -> One times game width Imperialist -> Half game width Diplomat -> Multi state scale Nation -> State scale Local -> County scale OFFENCE AND DEFENCE values, weakness and strength multipliers Idle player states Grafting -> Willing to work while not busy Conscript -> Willing to risk / fight while not busy or active Idle male players sometimes get random women pregnant, bastard children offspring Add all of the funny and ironic facts of life in. PRIORITISE. FOCUS on accomplishments, tell the world like on runescape! super social Request real world identification Social logins, take profile pictures Cosmeitc sales may come from generating a character for all players that can only be upgraded etc etc money https://charactercreator.org/ SPECIAL EVENTS Dragon flying across skies attacking villages and properties, archers can target from villages or field Random loot flies across the map first person to click within their village range gets it What events that get people working together from runescape can be converted into the game? World prophecy Epic threat every 100 years Legendary threat every 1000 years Witchcraft and cursing, curse a village, plague etc (Some Progress Desired): Set viewport to full screen, some way to debug / view boundaries? Draw middle tile Draw a tile next to center tile future: detect space for unrendered cells
+
+
+gisaima notes
+basic / rare / legendary village types emphasis on rarity
+
+
+gisaima notes build weapons and units separately to build the unit you need the weapon from the smithy
+
+
+// click and drag from village to another (overview mode or some shit) to send attacks or support or resources, panel to customise options and window to drag from/to villages
+
+// red peace sign, red, vines
+// green vines
+
+
+
+
+Gisaima notes
+Can see destroyed village and loot it or take over it
+
+
+
+How do battles work, how does attacking/defending work?
+What can be battled?
+What can be attacked or defended?
+How does travel work?
+
+
+Map height presets
+Max -> One and a half times total game width, pointless any bigger.
+Full -> One times game width
+Imperialist -> Half game width
+Diplomat -> Multi state scale
+Nation -> State scale
+Local -> County scale
+
+OFFENCE AND DEFENCE values, weakness and strength multipliers
+
+Idle player states
+Grafting -> Willing to work while not busy
+Conscript -> Willing to risk / fight while not busy or active
+
+Idle male players sometimes get random women pregnant, bastard children offspring
+Add all of the funny and ironic facts of life in. PRIORITISE.
+
+
+FOCUS on accomplishments, tell the world like on runescape!
+super social
+
+Request real world identification
+Social logins, take profile pictures
+
+
+Cosmeitc sales may come from generating a character for all players that can only be upgraded etc etc money
+https://charactercreator.org/
+
+
+
+SPECIAL EVENTS
+Dragon flying across skies attacking villages and properties, archers can target from villages or field
+Random loot flies across the map first person to click within their village range gets it
+
+What events that get people working together from runescape can be converted into the game?
+
+World prophecy
+Epic threat every 100 years
+Legendary threat every 1000 years
+
+Witchcraft and cursing, curse a village, plague etc
+
+
+
+
+
+
+Gisaima (Some Progress Desired):
+Set viewport to full screen, some way to debug / view boundaries?
+Draw middle tile
+Draw a tile next to center tile
+
+future: detect space for unrendered cells
+
+
+
+
+What should really be valued in the game is the concept of playing choosing to work for other players 
+
+They should be allowed the shoulder but it should defuwlr to wnt category and thee highest paying
+
+There should be an interface with two purposes
+
+Show the categories and types of jobs offered and duration 
+
+Buy and sell, automate so it is possible to use as a local resource!! 😤😤😤
+
+
+It is merely a transaction of offering the employee payer that unlock or allowance of an extra inout like tribal wars population slot
+
+Extend to leasing units for purposes and allowing the smooth travel and auto navigation of cpu groups on the map towards a target
+
+Perhaps this should be default if player unit is close enough to give some defensive buff
+
+
+
+Potential perk to see what the purpose is 
+
+Potential perk types list too 
+
+
+
+
+Update unit group position.
+
+
+Query current coordinates to check if chunk changed.
+
+Changes required
+game_data//unitGroups
+game_data/
+game_data/players 
+
+
+Gisama battles have durations and are visible on map afterwards
+Can be scavenged 
+
+Make populations and soldiers real with histories etc 
+Give real choices to winner of battles can enslave execute imprison or free
+Can only spare good men 
+
+Track whether a man is good maybe hidden 
+
+User
+    Lives
+     Breakdown life history
+
+
+
+Trade between cities can be stolen
+People stop reading there 
+Steal shit like rust 
+
+Structure needs wall to deny entry
+
+
+Next Steps
+Building
+Gathering
+Trading
+Combat
+
+Gathering
+Break down resource types based on biomes.
+Switch items from unit group to structure
+
+Trading
+Trade unit group items to another group.
+Trade items within a structure
+
+Combat
+Attack unit group
+Attack structure
+
+Building
+Document structure types, criteria and cost
+Document building types, criteria and cost
+Document unit types, criteria and cost
+

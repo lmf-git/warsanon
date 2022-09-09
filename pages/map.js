@@ -40,7 +40,7 @@ export default function MapPage() {
         // ...
         document.documentElement.classList.remove(styles['map-window']);
 
-        // remove map-fullheight class to html and body
+        // Remove map-fullheight class to html and body
         [document.body, document.documentElement, document.querySelector('#__next')]
           .map(el => el.classList.remove(styles['map-fullheight']));
 

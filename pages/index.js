@@ -3,7 +3,10 @@ import Head from 'next/head';
 import Layout from '@components/Layout/Layout';
 import styles from '@components/Home/Home.module.css';
 
+
 export default function Home() {
+
+  // TODO: Check if logged in, in the layout to dictate buttons
 
   return (
     <Layout>
@@ -22,7 +25,7 @@ export default function Home() {
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul>
-          <li>Login</li>
+          <li><s>Login</s></li>
           <li>World select </li>
           <li>Position</li>
           <li>Dying</li>
@@ -31,3 +34,6 @@ export default function Home() {
     </Layout>
   )
 }
+
+
+

@@ -1,18 +1,45 @@
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
 
 import firebaseConfig from 'firebaseConfig';
 import Layout from '@components/Layout/Layout';
+import { initializeApp } from 'firebase/app';
+import { useEffect, useState } from 'react';
+import { child, get, getDatabase, ref } from 'firebase/database';
 
 firebase.initializeApp(firebaseConfig);
 
 export default function Worlds() {
-  // Text at the top, stating purpose - you are logging in to play the game, world, username, etc.
-  // It will help to explain why it is demanding a phone number.
 
+  const [worlds, setWorlds] = useState([])
+
+  useEffect(() => {
+    const load = async () => {
+      initializeApp(firebaseConfig);
+      const dbRef = ref(getDatabase());
+      const snapshot = await get(child(dbRef, `worlds`));
+      setWorlds(snapshot.val())
+    };
+    load();
+  });
+ 
   return (
-    <Layout>
+    <Layout showActions={false}>
       <h1>Worlds</h1>
+
+      <div>
+        { 
+          worlds.map((w, wI) => 
+            <div 
+              onClick={() => {
+                console.log('Set current world');
+                localStorage.setItem('currentWorld', w.code);
+              }}
+              key={`w-${w.code}`}>
+              { w.name }
+            </div>
+          )
+        }
+      </div>
     </Layout>
   );
 }
