@@ -1,10 +1,8 @@
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+// import 'firebase/compat/auth';
 
 // Official wrapper from Firebase organiastion to bundle style into app.
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-
-import firebaseConfig from 'firebaseConfig';
 
 import Layout from '@components/Layout/Layout';
 
