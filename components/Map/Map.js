@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import { Assets } from '@pixi/assets';
 
 import styles from '@components/Map/Map.module.css';
+import { VILLAGES } from 'lib/map/visual';
+import { async } from '@firebase/util';
 
 export default function Map({ visibleRows }) {
     useEffect(() => {
@@ -23,35 +25,40 @@ export default function Map({ visibleRows }) {
         // Import assets
         // Assets 
 
-        const load = async () => {
-            const texture = await Assets.load('/logo.png');
-            const bunny = new PIXI.Sprite(texture);
-
-            // Setup the position of the bunny
-            bunny.x = engine.renderer.width / 2;
-            bunny.y = engine.renderer.height / 2;
-
-            // Rotate around the center
-            bunny.anchor.x = 0.5;
-            bunny.anchor.y = 0.5;
-
-            // Add the bunny to the scene we are building
-            engine.stage.addChild(bunny);
-
-            // Listen for frame updates
-            engine.ticker.add(() => {
-                bunny.x = (map.viewport.position.x + map.viewport.width / 2) / map.viewport.width * engine.renderer.width;
-                bunny.y = (map.viewport.position.y + map.viewport.width / 2) / map.viewport.width * engine.renderer.height;
-                bunny.width = engine.renderer.width / map.viewport.width;
-                bunny.height = engine.renderer.height/ map.viewport.width;
-                // each frame we spin the bunny around a bit
-            });
-        };
         
-        load();
+
+
         setup();
 
-        //some placeholder villages
+        // Some placeholder villages, will be loaded from db in future
+        let structures = [
+            {x : -1, y : -1, type : "ally_village"},
+            {x : 0, y : 0, type : "own_spawn"},
+            {x : 4, y : 4, type : "friendly_village"},
+            {x : 2, y : 3, type : "enemy_village"},
+            {x : 1, y : 5, type : "enemy_village"},
+        ];
+
+        // 
+        const load = async () => {
+            for(let i = 0; i < structures.length; i++){
+                const texture = await Assets.load('/map/structures/' + structures[i].type + ".png");
+                structures[i].sprite = new PIXI.Sprite(texture);
+                engine.stage.addChild(structures[i].sprite);
+            }
+            
+            engine.ticker.add(() => {
+                for(let i = 0; i < structures.length; i++){
+                    structures[i].sprite.x = (map.viewport.position.x + structures[i].x + map.viewport.width / 2) / map.viewport.width * engine.renderer.width;
+                    structures[i].sprite.y = (map.viewport.position.y + structures[i].y + map.viewport.width / 2) / map.viewport.width * engine.renderer.height;
+                    structures[i].sprite.width = engine.renderer.width / map.viewport.width;
+                    structures[i].sprite.height = engine.renderer.height/ map.viewport.width;
+                }
+            });
+            
+        };
+
+        load();
         
 
     }, []);
