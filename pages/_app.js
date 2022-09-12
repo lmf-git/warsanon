@@ -14,19 +14,26 @@ export default function App({ Component, pageProps }) {
     
   const dbRef = ref(getDatabase());
   useEffect(() => {
-      const listener = onAuthStateChanged(getAuth(),  auth => { setAuth(auth) });
+      const listener = onAuthStateChanged(getAuth(),  auth => setAuth(auth));
 
       const load = async () => {
         const accountSnapshot = await get(child(dbRef, `accounts/${auth.uid}`));
-        setAccount(accountSnapshot.val());
+
+        // Default account data state.
+        const accountData = accountSnapshot.val() ? accountSnapshot.val() : { worlds: {}};
+        setAccount(accountData);
       };
 
       // Load critical player data as soon as possible.
-      if (auth)
-        load();
+      if (auth) load();
       
       return () => listener();
-  }, [auth]);
+  }, [auth, account]);
 
-  return <Component auth={auth} account={account} {...pageProps} />
+  return <Component 
+    auth={auth} 
+    account={account}
+    setAccount={setAccount}
+    {...pageProps} 
+  />
 };
