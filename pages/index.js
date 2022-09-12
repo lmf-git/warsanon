@@ -26,10 +26,13 @@ export default function Home({ auth }) {
         <h2>Roadmap</h2>
         <ul>
           <li><s>Login</s></li>
+          <li>Complete profile/Onboarding</li>
           <li><s>World select</s></li>
-          <li>World register</li>
+          <li><s>World register</s></li>
+          <li>Spawn</li>
           <li>Position</li>
           <li>Dying</li>
+          <li>Add AuthContext and useAuthContext</li>
         </ul>
       </div>
     </Layout>

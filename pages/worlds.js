@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { child, get, getDatabase, ref } from 'firebase/database';
+import { child, get, getDatabase, ref, set } from 'firebase/database';
 
 import WorldManager from 'lib/worldManager';
 
@@ -9,7 +9,7 @@ import { getAuth } from 'firebase/auth';
 
 import styles from "@components/Worlds/Worlds.module.css";
 
-export default function Worlds({ auth, account }) {
+export default function Worlds({ auth, account, setAccount }) {
   const router = useRouter();
 
   const [worlds, setWorlds] = useState({});
@@ -17,9 +17,6 @@ export default function Worlds({ auth, account }) {
   // TODO: Create useUser hook to load additional data (registered worlds)
 
   useEffect(() => {
-    console.log(getAuth());
-    console.log(auth);
-
     const load = async () => {
       console.log('Loading');
 
@@ -30,16 +27,19 @@ export default function Worlds({ auth, account }) {
       const worldsSnapshot = await get(child(dbRef, `worlds`));
       setWorlds(worldsSnapshot.val());
 
-      console.log(worldsSnapshot.val());
-
-      console.log(account);
-
+      // console.log(worldsSnapshot.val());
+      // console.log(account);
     };
 
     if (auth)
       load();
 
   }, [auth]);
+
+  const register = (world) => {
+    const db = getDatabase();
+    set(ref(db, `accounts/${auth.uid}/worlds/${world}`), true);
+  }
  
   return (
     <Layout showActions={false}>
@@ -57,9 +57,21 @@ export default function Worlds({ auth, account }) {
 
               {/* account */}
               { 
-                account?.worlds[w] ?
-                <button className={styles.select} onClick={() => {
-                  // µµµ
+                !account?.worlds[w] ?
+                <button className={styles.select} onClick={async () => {
+                  // alert('Registering');
+                  register(w);
+
+
+
+                  console.log(account);
+
+                  const updatedAccount = account;
+                  updatedAccount.worlds[w] = true;
+
+                  console.log(updatedAccount);
+
+                  setAccount(updatedAccount);
                 }}>
                   Register
                 </button>
