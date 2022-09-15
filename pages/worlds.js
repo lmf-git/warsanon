@@ -5,7 +5,6 @@ import { child, get, getDatabase, ref, set } from 'firebase/database';
 import WorldManager from 'lib/worldManager';
 
 import Layout from '@components/Layout/Layout';
-import { getAuth } from 'firebase/auth';
 
 import styles from "@components/Worlds/Worlds.module.css";
 

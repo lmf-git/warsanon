@@ -1,14 +1,15 @@
 import Head from 'next/head';
-import { useEffect, useMemo, useState } from "react";
+import Link from 'next/link';
+import { useEffect, useState } from "react";
 
+import MapConfig from '../lib/map/map';
 import { setup } from "lib/map/controls";
 import { drawTiles, load_tiles } from "lib/map/visual";
 
-import MapConfig from '../lib/map/map';
+
 import Map from '@components/Map/Map';
 
 import styles from '@components/Map/Map.module.css';
-import Link from 'next/link';
 
 export default function MapPage() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
