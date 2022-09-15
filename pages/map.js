@@ -25,7 +25,7 @@ export default function MapPage() {
 
   useEffect(
     () => {
-      // ...
+      // Add map window class from the html element
       document.documentElement.classList.add(styles['map-window']);
 
       // Add map-fullheight class to html and body
@@ -34,9 +34,8 @@ export default function MapPage() {
 
       setVisibleRows(drawTiles(position))
 
-
       return function cleanup() {
-        // ...
+        // Remove map window class from the html element
         document.documentElement.classList.remove(styles['map-window']);
 
         // Remove map-fullheight class to html and body
@@ -56,7 +55,7 @@ export default function MapPage() {
       //setPosition(newPosition);
 
       // Dev
-      setSidebarOpen(true);
+      // setSidebarOpen(true);
     }, 2000);
   }, []);
 
