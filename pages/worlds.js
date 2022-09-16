@@ -1,52 +1,91 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { initializeApp } from 'firebase/app';
-import { child, get, getDatabase, ref } from 'firebase/database';
+import { child, get, getDatabase, ref, set } from 'firebase/database';
 
 import WorldManager from 'lib/worldManager';
-import firebaseConfig from 'firebaseConfig';
 
 import Layout from '@components/Layout/Layout';
 
-initializeApp(firebaseConfig);
+import styles from "@components/Worlds/Worlds.module.css";
 
-export default function Worlds() {
-  const [worlds, setWorlds] = useState([])
+export default function Worlds({ auth, account, setAccount }) {
   const router = useRouter();
+
+  const [worlds, setWorlds] = useState({});
+
+  // TODO: Create useUser hook to load additional data (registered worlds)
 
   useEffect(() => {
     const load = async () => {
-      initializeApp(firebaseConfig);
+      console.log('Loading');
+
+      const world = WorldManager.get();
+      
+      // Load available worlds.
       const dbRef = ref(getDatabase());
-      const snapshot = await get(child(dbRef, `worlds`));
-      setWorlds(snapshot.val())
+      const worldsSnapshot = await get(child(dbRef, `worlds`));
+      setWorlds(worldsSnapshot.val());
+
+      // console.log(worldsSnapshot.val());
+      // console.log(account);
     };
-    load();
-  });
+
+    if (auth)
+      load();
+
+  }, [auth]);
+
+  const register = (world) => {
+    const db = getDatabase();
+    set(ref(db, `accounts/${auth.uid}/worlds/${world}`), true);
+  }
  
   return (
     <Layout showActions={false}>
       <h1>Worlds</h1>
-      <div>
-        { 
-          worlds.map(w => 
+      <div className={styles.worlds}>
+        {
+          Object.keys(worlds).map(w => 
             <div 
-              onClick={() => {
-                WorldManager.set(w.code);
-                router.push('/map');
-              }}
-              key={`w-${w.code}`}>
-              { w.name }
+              className={styles.world}
+              key={`w-${w}`}>
+              { worlds[w].name }
 
               {/* Generate image for the world */}
               {/* <img src="" /> */}
 
-              <button>
-                Register
-              </button>
-              <button>
-                Play
-              </button>
+              {/* account */}
+              { 
+                !account?.worlds[w] ?
+                <button className={styles.select} onClick={async () => {
+                  // alert('Registering');
+                  register(w);
+
+
+
+                  console.log(account);
+
+                  const updatedAccount = account;
+                  updatedAccount.worlds[w] = true;
+
+                  console.log(updatedAccount);
+
+                  setAccount(updatedAccount);
+                }}>
+                  Register
+                </button>
+                :
+                <button
+                  onClick={() => {
+                  WorldManager.set(w);
+                  router.push('/map');
+                }}>
+                  Play
+                </button>
+              }
+
+              {/* Show special if current world? */}
+              {/* If currentWorld skip this page to the game? */}
             </div>
           )
         }

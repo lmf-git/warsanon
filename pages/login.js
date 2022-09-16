@@ -1,39 +1,37 @@
 import firebase from 'firebase/compat/app';
+import firebaseConfig from 'firebaseConfig';
 import 'firebase/compat/auth';
 
 // Official wrapper from Firebase organiastion to bundle style into app.
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-import firebaseConfig from 'firebaseConfig';
-
 import Layout from '@components/Layout/Layout';
 
 import styles from '@components/Home/Home.module.css';
 
-firebase.initializeApp(firebaseConfig);
-
-// Configure FirebaseUI.
-const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: 'popup',
-  
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  // signInSuccess: () => { alert('testing'); return false; },
-  signInSuccessUrl: '/worlds',
-
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-
-
-    // Dev only
-    'anonymous'
-  ],
-};
 
 function Login() {
-  // Text at the top, stating purpose - you are logging in to play the game, world, username, etc.
-  // It will help to explain why it is demanding a phone number.
+  // Auth UI needs a specific version/instance of the firebase app for some reason. Acceptable compromise.
+  firebase.initializeApp(firebaseConfig);
+
+  // Configure FirebaseUI.
+  const uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: 'popup',
+    
+    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+    // signInSuccess: () => { alert('testing'); return false; },
+    signInSuccessUrl: '/worlds',
+
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [
+      firebase.auth?.PhoneAuthProvider.PROVIDER_ID,
+
+
+      // Dev only
+      'anonymous'
+    ],
+  };
 
   return <Layout>
     <h1>Login</h1>

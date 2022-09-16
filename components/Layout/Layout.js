@@ -1,20 +1,8 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-
-import firebaseConfig from 'firebaseConfig';
-import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import styles from '@components/Home/Home.module.css';
 
-export default function Layout({ children, showActions = true }) {
-    const [user, setUser] = useState(null);
-    
-    initializeApp(firebaseConfig);
-    useEffect(() => {
-        const listener = onAuthStateChanged(getAuth(),  user => setUser(user));
-        return () => listener();
-    }, [user]);
+export default function Layout({ children, showActions = true, auth }) {
 
     return <> 
         <div className={styles.header}>
@@ -31,12 +19,12 @@ export default function Layout({ children, showActions = true }) {
                 </div>
             </div>
 
-            {/* { user ? user.uid : null } */}
+            {/* { auth ? auth.uid : null } */}
 
             { showActions ?
                 <div className={styles['header-actions']}>
                     { 
-                        user ? 
+                        auth ? 
                         <Link href="/worlds">
                             <a className={styles['header-actions-item']}>
                                 Play
