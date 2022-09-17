@@ -9,13 +9,14 @@ import { VILLAGES } from 'lib/map/visual';
 
 import styles from '@components/Map/Map.module.css';
 
-export default function Map({ visibleRows }) {
+export default function Map() {
     useEffect(() => {
-        const view = document.querySelector('#map');
         if (window.safari !== undefined)
-          PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
-
-        const engine =  MapConfig.pixi = new PIXI.Application({ view });
+            PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
+        
+        const view = document.querySelector('#map');
+        const resizeTo = document.querySelector('#map-container');
+        const engine =  MapConfig.pixi = new PIXI.Application({ view, resizeTo });
 
         setup();
 
