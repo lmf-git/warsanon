@@ -3,13 +3,17 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import MapConfig from '../lib/map/map';
-import { makePageFullHeightViewport } from "lib/map/visual";
+import useProtected from "lib/useProtected";
+import useEntireScreen from "lib/useEntireScreen";
 
 import Map from '@components/Map/Map';
 
 import styles from '@components/Map/Map.module.css';
 
 export default function MapPage() {
+  useProtected();
+  useEntireScreen();
+
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   // const [visibleRows, setVisibleRows] = useState([]);
@@ -17,9 +21,6 @@ export default function MapPage() {
   // Share to rest of client.
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
-
-  // Make the page a full height/width viewport for easier sizing/positioning.µ
-  useEffect(makePageFullHeightViewport, []);
 
   return <>
     <Head>

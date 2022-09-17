@@ -1,17 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { child, get, getDatabase, ref, set } from 'firebase/database';
 
 import WorldManager from 'lib/worldManager';
 
+import useProtected from 'lib/useProtected';
+
+import Context from '@components/Context';
 import Layout from '@components/Layout/Layout';
 
 import styles from "@components/Worlds/Worlds.module.css";
 
-export default function Worlds({ auth, account, setAccount }) {
+export default function Worlds() {
+  useProtected();
+  
   const router = useRouter();
-
+  const { auth, account, setAccount } = useContext(Context);
+  
   const [worlds, setWorlds] = useState({});
+
 
   // TODO: Create useUser hook to load additional data (registered worlds)
 

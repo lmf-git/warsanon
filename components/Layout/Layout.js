@@ -1,8 +1,11 @@
 import Link from 'next/link';
+import { useContext } from 'react';
 
 import styles from '@components/Home/Home.module.css';
+import Context from '@components/Context';
 
-export default function Layout({ children, showActions = true, auth }) {
+export default function Layout({ children, showActions = true }) {
+    const context = useContext(Context);
 
     return <> 
         <div className={styles.header}>
@@ -24,7 +27,7 @@ export default function Layout({ children, showActions = true, auth }) {
             { showActions ?
                 <div className={styles['header-actions']}>
                     { 
-                        auth ? 
+                        context.auth ? 
                         <Link href="/worlds">
                             <a className={styles['header-actions-item']}>
                                 Play
