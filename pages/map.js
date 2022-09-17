@@ -18,7 +18,7 @@ export default function MapPage() {
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
 
-  // Make the page a full height/width viewport for easier sizing/positioning.
+  // Make the page a full height/width viewport for easier sizing/positioning.µ
   useEffect(makePageFullHeightViewport, []);
 
   return <>
