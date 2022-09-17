@@ -39,15 +39,10 @@ export default function Map() {
             
             engine.ticker.add(() => {
                 for (let i = 0; i < structures.length; i++) {
-                    structures[i].sprite.x = (map.viewport.position.x + structures[i].x) * map.viewport.scale;
-                    structures[i].sprite.y = (map.viewport.position.y + structures[i].y) * map.viewport.scale;
+                    structures[i].sprite.x = (map.viewport.position.x + structures[i].x) * map.viewport.scale + view.width / 2;
+                    structures[i].sprite.y = (map.viewport.position.y + structures[i].y) * map.viewport.scale + view.height / 2;
                     structures[i].sprite.width = map.viewport.scale;
                     structures[i].sprite.height = map.viewport.scale;
- 
-                    // structures[i].sprite.x = 0;
-                    // structures[i].sprite.y = 0;
-                    // structures[i].sprite.width = 50;
-                    // structures[i].sprite.height = 50;
                 }
             });
         };
