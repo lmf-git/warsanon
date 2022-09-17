@@ -1,11 +1,9 @@
+import { useEffect, useState } from "react";
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useState } from "react";
 
 import MapConfig from '../lib/map/map';
-import { setup } from "lib/map/controls";
-import { drawTiles, load_tiles } from "lib/map/visual";
-
+import { makePageFullHeightViewport } from "lib/map/visual";
 
 import Map from '@components/Map/Map';
 
@@ -13,52 +11,15 @@ import styles from '@components/Map/Map.module.css';
 
 export default function MapPage() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [horizontalTileNum, setHorizontalTileNum] = useState(10);
-  const [visibleRows, setVisibleRows] = useState([]);
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  // const [visibleRows, setVisibleRows] = useState([]);
 
   // Share to rest of client.
-  MapConfig.viewport.horizontalTileNum = horizontalTileNum;
-  MapConfig.viewport.setHorizontalTileNum = setHorizontalTileNum;
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
 
-  useEffect(
-    () => {
-      // Add map window class from the html element
-      document.documentElement.classList.add(styles['map-window']);
-
-      // Add map-fullheight class to html and body
-      [document.body, document.documentElement, document.querySelector('#__next')]
-        .map(el => el.classList.add(styles['map-fullheight']));
-
-      setVisibleRows(drawTiles(position))
-
-      return function cleanup() {
-        // Remove map window class from the html element
-        document.documentElement.classList.remove(styles['map-window']);
-
-        // Remove map-fullheight class to html and body
-        [document.body, document.documentElement, document.querySelector('#__next')]
-          .map(el => el.classList.remove(styles['map-fullheight']));
-
-      }
-    },
-   [position.x, position.y, horizontalTileNum]
-  );
-
-  useEffect(() => {
-    setTimeout(() => {
-      //const newPosition = { x: 505, y: 505 };
-
-      // Test updating position
-      //setPosition(newPosition);
-
-      // Dev
-      // setSidebarOpen(true);
-    }, 2000);
-  }, []);
+  // Make the page a full height/width viewport for easier sizing/positioning.
+  useEffect(makePageFullHeightViewport, []);
 
   return <>
     <Head>
@@ -74,8 +35,8 @@ export default function MapPage() {
     </div>
     
     <div className={styles['map-overview']}>
-      <div className={styles['terrain']}>
-        <Map visibleRows={visibleRows} />
+      <div id="map-container" className={styles['terrain']}>
+        <Map />
       </div>
       { !sidebarOpen ? null :
         <div className={styles['sidebar']}>
