@@ -25,17 +25,16 @@ export default function Home({ auth }) {
 
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
-        <ul>
+        <ul className={styles['roadmap-list']}>
+          <li>Complete profile/Onboarding</li>
+          <li>Spawn</li>
+          <li>Position</li>
+          <li>Dying</li>
           <li><s>Login</s></li>
           <li><s>World select</s></li>
           <li><s>World register</s></li>
           <li><s>Add AuthContext and useAuthContext</s></li>
-          <li>Create protected/incomplete profile guard as effect</li>
-          <li>Change auth and account useEffects to their own hooks</li>
-          <li>Complete profile/Onboarding - QR code/add app to phone/notifications/promote something</li>
-          <li>Spawn</li>
-          <li>Position</li>
-          <li>Dying</li>
+          <li><s>Create protected/incomplete profile guard as effect</s></li>
         </ul>
       </div>
     </Layout>

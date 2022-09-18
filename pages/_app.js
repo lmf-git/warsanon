@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
+
 import firebaseConfig from 'firebaseConfig';
 
 import AccountManager from 'lib/accountManager';
