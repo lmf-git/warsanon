@@ -18,7 +18,7 @@ export default function Layout({ children, showActions = true }) {
 
                 <div className={styles['branding-text']}>
                     <h1 className={styles['branding-title']}>Warsanon</h1>
-                    <p className={styles['branding-slogan']}>Medeival fantasy strategy web game</p>
+                    <p className={styles['branding-slogan']}>Medieval fantasy strategy web game</p>
                 </div>
             </div>
 

@@ -15,7 +15,7 @@ export default function Complete() {
         // Add an image
 
   return <Layout showActions={false}>
-    <h1>Complete Account Ya Cunt</h1>
+    <h1>Complete Account</h1>
 
     <form className={styles.form}>
       <div className={styles.field}>
