@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import * as PIXI from 'pixi.js';
 import { Assets } from '@pixi/assets';
 
-import MapConfig from 'lib/map/map';
+import MapConfig from 'lib/map/mapConfig';
 import { setup } from "lib/map/controls";
-import map from 'lib/map/map';
-import { VILLAGES } from 'lib/map/visual';
+import map from 'lib/map/mapConfig';
+import { VILLAGES } from 'lib/map/assets';
 
 import styles from '@components/Map/Map.module.css';
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Head from 'next/head';
 import Link from 'next/link';
 
-import MapConfig from '../lib/map/map';
+import MapConfig from '../lib/map/mapConfig';
 import useProtected from "lib/useProtected";
 import useEntireScreen from "lib/useEntireScreen";
 
