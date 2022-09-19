@@ -26,10 +26,11 @@ export default function Home({ auth }) {
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
-          <li>Complete profile/Onboarding</li>
           <li>Spawn</li>
           <li>Position</li>
           <li>Dying</li>
+          <li><s>Complete profile/Onboarding</s></li>
+          <li><s>Allow avatar</s></li>
           <li><s>Login</s></li>
           <li><s>World select</s></li>
           <li><s>World register</s></li>
