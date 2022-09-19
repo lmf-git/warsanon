@@ -4,12 +4,11 @@ import Layout from '@components/Layout/Layout';
 import styles from '@components/Home/Home.module.css';
 
 
-export default function Home({ auth }) {
-
+export default function Home() {
   // TODO: Check if logged in, in the layout to dictate buttons
 
   return (
-    <Layout auth={auth}>
+    <Layout>
       <Head>
         <title>Warsanon | Home</title>
         <link rel="icon" href="/favicon.ico" />

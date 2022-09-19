@@ -49,14 +49,21 @@ export default function Worlds() {
  
   return (
     <Layout showActions={false}>
-      <h1>Worlds</h1>
+      <h1 className={styles.title}>Worlds</h1>
       <div className={styles.worlds}>
         {
           Object.keys(worlds).map(w => 
             <div 
               className={styles.world}
               key={`w-${w}`}>
-              { worlds[w].name }
+
+              <h2 className={styles['world-name']}>
+                { worlds[w].name }
+              </h2>
+
+              <div>
+                Users: ?
+              </div>
 
               {/* Generate image for the world */}
               {/* <img src="" /> */}
@@ -64,11 +71,9 @@ export default function Worlds() {
               {/* account */}
               { 
                 !account?.worlds[w] ?
-                <button className={styles.select} onClick={async () => {
+                <button className={styles.register} onClick={async () => {
                   // alert('Registering');
                   register(w);
-
-
 
                   console.log(account);
 
@@ -83,9 +88,10 @@ export default function Worlds() {
                 </button>
                 :
                 <button
+                  className={styles.play} 
                   onClick={() => {
-                  WorldManager.set(w);
-                  router.push('/map');
+                    WorldManager.set(w);
+                    router.push('/map');
                 }}>
                   Play
                 </button>

@@ -1,3 +1,7 @@
+.title {
+    color: rgb(222, 222, 222);
+}
+
 .worlds {
     display: flex;
 }
@@ -7,10 +11,95 @@
     flex-direction: column;
     align-items: center;
     flex: 1;
+
+    margin: .125em;
+    
+    background: rgb(147, 1, 1);
+    font-size: 1.35em;
+    font-weight: 900;
+
+    padding: .5em;
+    justify-content: space-between;
+
+    border-radius: .15em;
+    height: 6em;
 }
 
-.select {
-    background: blue;
-    padding: .3em .6em;
+.world-name {
+    margin: 0;
+    margin-right: auto;
     font-size: 1.2em;
+    color: rgb(41, 41, 41);
 }
+
+.register, .play {
+    padding: .3em 1.5em;
+    font-size: .9em;
+    border: none;
+    border-radius: .125em;
+    cursor: pointer;
+}
+.register:hover, .play:hover {
+    opacity: .75;
+}
+
+.register {
+    background: peru;
+}
+
+.play {
+    background: greenyellow;
+}
+
+
+
+
+
+
+
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+
+.label {
+    color: rgb(222, 222, 222);
+    font-size: 1.25em;
+}
+
+.input {
+    padding: .5em;
+    background: rgb(222, 222, 222);
+    color: rgb(45, 45, 45);
+    font-size: 1.125em;
+
+    margin: 0;
+    border: none;
+    border-radius: .125em;
+}
+
+.submit {
+    padding: .5em;
+    font-size: 1.125em;
+    background: rgb(34, 143, 222);
+    color: rgb(45, 45, 45);
+    border: none;
+    font-weight: bold;
+    border-radius: .125em;
+}
+.submit:hover {
+    cursor: pointer;
+    background: rgb(222, 222, 222);
+}
+
+

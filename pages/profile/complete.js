@@ -24,17 +24,18 @@ export default function Complete() {
     const data = new FormData(ev.target);
 
     try {
+      // TODO: Save the image after selecting it, not on form submit (prevents delay).
       // Save the image.
       const image = data.get('image');
       if (image) {
         const uploadedImage = await upload(user.uid, image);
-        const url = await getDownloadURL(uploadedImage.ref);
-        setRemotePhoto(url);
+        const photoURL = await getDownloadURL(uploadedImage.ref);
+        setRemotePhoto(photoURL);
       }
 
       // Set the username and email.
       const displayName = data.get('displayName');
-      await updateProfile(user, { displayName, photoURL: remotePhoto });
+      await updateProfile(user, { displayName, photoURL });
       await updateEmail(user, data.get('email'));
 
       // Allow onwards past the complete profile guards.
