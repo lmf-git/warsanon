@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import Layout from '@components/Layout/Layout';
-import styles from '@components/Home/Home.module.css';
+import styles from '@components/Pages/Home/Home.module.css';
 
 
 export default function Home() {
@@ -25,6 +25,7 @@ export default function Home() {
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
+          <li>World user count</li>
           <li>Spawn</li>
           <li>Position</li>
           <li>Dying</li>

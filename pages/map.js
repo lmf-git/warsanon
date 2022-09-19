@@ -6,21 +6,27 @@ import MapConfig from '../lib/map/mapConfig';
 import useProtected from "lib/useProtected";
 import useEntireScreen from "lib/useEntireScreen";
 
-import Map from '@components/Map/Map';
+import MapGUI from '@components/Game/Map/MapGUI';
+import SpawnOverlay from "@components/Game/Map/SpawnOverlay/SpawnOverlay";
 
-import styles from '@components/Map/Map.module.css';
+import styles from '@components/Game/Map/MapGUI.module.css';
+import GameManager from "lib/gameManager";
 
 export default function MapPage() {
-  useProtected();
-  useEntireScreen();
-
+  const [overlay, setOverlay] = useState(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  // const [visibleRows, setVisibleRows] = useState([]);
 
   // Share to rest of client.
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
+
+  useProtected();
+  useEntireScreen();
+
+  // Bootstrap game.
+  // Will need a guard to always redirect to map unless spawned.
+  useEffect(() => GameManager.bootstrap(setOverlay), []);
 
   return <>
     <Head>
@@ -37,13 +43,14 @@ export default function MapPage() {
     
     <div className={styles['map-overview']}>
       <div id="map-container" className={styles['terrain']}>
-        <Map />
+        <MapGUI />
       </div>
       { !sidebarOpen ? null :
         <div className={styles['sidebar']}>
           Test
         </div>
       }
+      { overlay === 'spawn' ? <SpawnOverlay setOverlay={setOverlay} /> : null }
     </div>
   </>
 }

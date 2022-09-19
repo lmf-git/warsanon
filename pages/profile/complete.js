@@ -10,12 +10,21 @@ import { useRouter } from "next/router";
 export default function Complete() {
   const router = useRouter();
   const [uploading, setUploading] = useState(false);
-  const [remotePhoto, setRemotePhoto] = useState(null);
+  const [photoURL, setPhotoURL] = useState(null);
 
   const [emailError, setEmailError] = useState(null);
   const [usernameError, setUsernameError] = useState(null);
 
   const upload = (uid, file) => uploadBytes(ref(getStorage(), `/avatars/${uid}`), file);
+
+  const onAvatarChange = async ev => {
+    const file = ev.target?.files?.[0];
+    if (file) {
+      const uploadedImage = await upload(getAuth().currentUser.uid, file);
+      const downloadURL = await getDownloadURL(uploadedImage.ref);
+      setPhotoURL(downloadURL);
+    }
+  }
 
   const onSubmit = async ev => {
     ev.preventDefault();
@@ -23,18 +32,13 @@ export default function Complete() {
     const user = getAuth().currentUser;
     const data = new FormData(ev.target);
 
+    const displayName = data.get('displayName');
+
     try {
       // TODO: Save the image after selecting it, not on form submit (prevents delay).
       // Save the image.
-      const image = data.get('image');
-      if (image) {
-        const uploadedImage = await upload(user.uid, image);
-        const photoURL = await getDownloadURL(uploadedImage.ref);
-        setRemotePhoto(photoURL);
-      }
 
-      // Set the username and email.
-      const displayName = data.get('displayName');
+      // Set the username, avatar, and email.
       await updateProfile(user, { displayName, photoURL });
       await updateEmail(user, data.get('email'));
 
@@ -59,7 +63,7 @@ export default function Complete() {
   return <Layout showActions={false}>
 
     {/* Show a preview of the uploaded image. */}
-    { remotePhoto ? <img src={remotePhoto} /> : null }
+    { photoURL ? <img src={photoURL} /> : null }
 
     <form className={styles.form} onSubmit={onSubmit}>
       <h1 className={styles.title}>Complete Account</h1>
@@ -67,7 +71,7 @@ export default function Complete() {
       <div className={styles.field}>
         <label className={styles.label} htmlFor="email">Image</label>
         <input 
-          placeholder="Recovery email address"
+          onChange={onAvatarChange}
           className={styles.input} name="image" type="file" />
       </div>
 

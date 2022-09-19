@@ -7,7 +7,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import Layout from '@components/Layout/Layout';
 
-import styles from '@components/Home/Home.module.css';
+import styles from '@components/Pages/Home/Home.module.css';
 
 
 function Login() {

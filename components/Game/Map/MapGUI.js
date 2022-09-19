@@ -7,9 +7,9 @@ import { setup } from "lib/map/controls";
 import map from 'lib/map/mapConfig';
 import { VILLAGES } from 'lib/map/assets';
 
-import styles from '@components/Map/Map.module.css';
+import styles from '@components/Game/Map/MapGUI.module.css';
 
-export default function Map() {
+export default function MapGUI() {
     useEffect(() => {
         if (window.safari !== undefined)
             PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;

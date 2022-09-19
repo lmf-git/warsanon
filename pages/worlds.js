@@ -9,7 +9,7 @@ import useProtected from 'lib/useProtected';
 import Context from '@components/Context';
 import Layout from '@components/Layout/Layout';
 
-import styles from "@components/Worlds/Worlds.module.css";
+import styles from "@components/Game/Worlds/Worlds.module.css";
 
 export default function Worlds() {
   useProtected();

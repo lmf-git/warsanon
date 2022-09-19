@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useContext } from 'react';
 
-import styles from '@components/Home/Home.module.css';
+import styles from '@components/Pages/Home/Home.module.css';
 import Context from '@components/Context';
 
 export default function Layout({ children, showActions = true }) {

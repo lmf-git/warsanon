@@ -14,5 +14,8 @@ export default function Profile() {
 
   return <Layout>
     <p>Profile</p>
+    { auth.uid }
+    <br />
+    { auth.displayName }
   </Layout>;
 }
