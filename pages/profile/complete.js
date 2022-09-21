@@ -1,11 +1,11 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { getAuth, updateEmail, updateProfile } from "firebase/auth";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 import Layout from '@components/Layout/Layout';
 
-import styles from '@components/Complete/Complete.module.css';
-import { useState } from "react";
-import { useRouter } from "next/router";
+import styles from '@components/Profile/Complete/Complete.module.css';
 
 export default function Complete() {
   const router = useRouter();
