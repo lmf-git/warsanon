@@ -2,30 +2,26 @@ import { useEffect } from "react";
 import * as PIXI from 'pixi.js';
 import { Assets } from '@pixi/assets';
 
-import MapConfig from 'lib/map/mapConfig';
-import { controlsListen } from "lib/map/controls";
-import map from 'lib/map/mapConfig';
-import { VILLAGES } from 'lib/map/assets';
+import MapConfig from 'lib/map/map';
+import { setup } from "lib/map/controls";
+import { VILLAGES } from 'lib/map/visual';
 import NoiseHandler from "lib/noiseHandler";
 
-import styles from '@components/Game/Map/MapGUI.module.css';
+import styles from '@components/Map/Map.module.css';
+import MapData from "lib/map/mapData";
 
-export default function MapGUI() {
+
+
+export default function Map() {
     useEffect(() => {
         if (window.safari !== undefined)
             PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
-
+        
         const view = document.querySelector('#map');
         const resizeTo = document.querySelector('#map-container');
-
-        // Initial sizing.
-        view.width = resizeTo.offsetWidth;
-        view.height = resizeTo.offsetHeight;
-
         const engine =  MapConfig.pixi = new PIXI.Application({ view, resizeTo });
 
-
-        controlsListen();
+        setup();
 
         /*
         // Some placeholder villages, will be loaded from db in future
@@ -59,24 +55,24 @@ export default function MapGUI() {
         const terrainTiles = { 
             OCEAN: '/map/textures/OCEAN.png',
             BEACH: '/map/textures/BEACH.png',
-            SCORCHED: '/map/textures/SCORCHED.png',
-            BARE: '/map/textures/BARE.png',
-            TUNDRA: '/map/textures/TUNDRA.png',
-            SNOW: '/map/textures/SNOW.png',
-            TEMPERATE_DESERT: '/map/textures/TEMPERATE_DESERT.png',
-            SHRUBLAND: '/map/textures/SHRUBLAND.png',
-            TAIGA: '/map/textures/TAIGA.png',
-            TEMPERATE_DECIDUOUS_FOREST: '/map/textures/TEMPERATE_DECIDUOUS_FOREST.png',
-            TEMPERATE_RAIN_FOREST: '/map/textures/TEMPERATE_RAIN_FOREST.png',
-            SUBTROPICAL_DESERT: '/map/textures/SUBTROPICAL_DESERT.png',
-            GRASSLAND: '/map/textures/GRASSLAND.png',
-            TROPICAL_SEASONAL_FOREST: '/map/textures/TROPICAL_SEASONAL_FOREST.png',
-            TROPICAL_RAIN_FOREST: '/map/textures/TROPICAL_RAIN_FOREST.png'
+            SCORCHED: '/map/textures/OCEAN.png',
+            BARE: '/map/textures/OCEAN.png',
+            TUNDRA: '/map/textures/OCEAN.png',
+            SNOW: '/map/textures/OCEAN.png',
+            TEMPERATE_DESERT: '/map/textures/OCEAN.png',
+            SHRUBLAND: '/map/textures/OCEAN.png',
+            TAIGA: '/map/textures/OCEAN.png',
+            TEMPERATE_DECIDUOUS_FOREST: '/map/textures/OCEAN.png',
+            TEMPERATE_RAIN_FOREST: '/map/textures/OCEAN.png',
+            SUBTROPICAL_DESERT: '/map/textures/OCEAN.png',
+            GRASSLAND: '/map/textures/OCEAN.png',
+            TROPICAL_SEASONAL_FOREST: '/map/textures/OCEAN.png',
+            TROPICAL_RAIN_FOREST: '/map/textures/OCEAN.png'
         };
 
         
 
-        const chunkSize = 25;
+        const chunkSize = 5;
         async function loadChunk(x, y){
             //get chunk detail from game server
             const chunk = {
@@ -131,7 +127,7 @@ export default function MapGUI() {
         }
 
         //get this from game server
-        MapConfig.seed = 2384832974;
+        MapConfig.seed = 10;
         NoiseHandler.initialise();
         loadChunk(0, 0);
         //load();
