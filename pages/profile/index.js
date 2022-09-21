@@ -13,8 +13,8 @@ export default function Profile() {
 
   return <Layout>
     <p>Profile</p>
-    { auth.uid }
+    { auth?.uid }
     <br />
-    { auth.displayName }
+    { auth?.displayName }
   </Layout>;
 }
