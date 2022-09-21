@@ -8,9 +8,9 @@ import useEntireScreen from "lib/useEntireScreen";
 
 import MapGUI from '@components/Game/Map/MapGUI';
 import SpawnOverlay from "@components/Game/Map/SpawnOverlay/SpawnOverlay";
+import GameManager from "lib/gameManager";
 
 import styles from '@components/Game/Map/MapGUI.module.css';
-import GameManager from "lib/gameManager";
 
 export default function MapPage() {
   const [overlay, setOverlay] = useState(null);
