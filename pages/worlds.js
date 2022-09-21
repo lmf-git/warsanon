@@ -1,17 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { child, get, getDatabase, ref, set } from 'firebase/database';
 
 import WorldManager from 'lib/worldManager';
 
+import useProtected from 'lib/useProtected';
+
+import Context from '@components/Context';
 import Layout from '@components/Layout/Layout';
 
-import styles from "@components/Worlds/Worlds.module.css";
+import styles from "@components/Game/Worlds/Worlds.module.css";
 
-export default function Worlds({ auth, account, setAccount }) {
+export default function Worlds() {
+  useProtected();
+  
   const router = useRouter();
-
+  const { auth, account, setAccount } = useContext(Context);
+  
   const [worlds, setWorlds] = useState({});
+
 
   // TODO: Create useUser hook to load additional data (registered worlds)
 
@@ -42,14 +49,21 @@ export default function Worlds({ auth, account, setAccount }) {
  
   return (
     <Layout showActions={false}>
-      <h1>Worlds</h1>
+      <h1 className={styles.title}>Worlds</h1>
       <div className={styles.worlds}>
         {
           Object.keys(worlds).map(w => 
             <div 
               className={styles.world}
               key={`w-${w}`}>
-              { worlds[w].name }
+
+              <h2 className={styles['world-name']}>
+                { worlds[w].name }
+              </h2>
+
+              <div>
+                Users: ?
+              </div>
 
               {/* Generate image for the world */}
               {/* <img src="" /> */}
@@ -57,11 +71,9 @@ export default function Worlds({ auth, account, setAccount }) {
               {/* account */}
               { 
                 !account?.worlds[w] ?
-                <button className={styles.select} onClick={async () => {
+                <button className={styles.register} onClick={async () => {
                   // alert('Registering');
                   register(w);
-
-
 
                   console.log(account);
 
@@ -76,9 +88,10 @@ export default function Worlds({ auth, account, setAccount }) {
                 </button>
                 :
                 <button
+                  className={styles.play} 
                   onClick={() => {
-                  WorldManager.set(w);
-                  router.push('/map');
+                    WorldManager.set(w);
+                    router.push('/map');
                 }}>
                   Play
                 </button>

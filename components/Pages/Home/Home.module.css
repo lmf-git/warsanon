@@ -55,3 +55,9 @@
 .header-actions-item:hover {
     opacity: .75;
 }
+
+
+.roadmap-list {
+    max-height: 10em;
+    overflow-y: scroll;
+}

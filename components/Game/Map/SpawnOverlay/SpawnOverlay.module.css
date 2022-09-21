@@ -1,0 +1,60 @@
+.overlay {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 20%;
+    background: rgb(135, 14, 14);
+
+    border-radius: .25em;
+    padding: 1em;
+}
+
+.title {
+    text-align: center;
+    color: rgb(222, 222, 222);
+    font-weight: 900;
+    margin: 0;
+}
+
+.spawns {
+    margin-top: .5em;
+}
+
+.spawn {
+    display: flex;
+    padding: .25em;
+}
+
+.label {
+    display: block;
+    width: calc(100% - 4em);
+    color: rgb(200, 200, 200);
+}
+
+.radio {
+    margin: 0;
+    font-size: 2em;
+    margin-right: .35em;
+    border: none;
+    background: yellow;
+}
+
+.confirm {
+    margin: 0;
+    margin-top: 1em;
+    border: none;
+    width: 100%;
+    font-size: 1.25em;
+    padding: .35em;
+    border-radius: .25em;
+    background: rgb(28, 28, 28);
+    color: rgb(173, 173, 173);
+}
+.confirm:hover {
+    cursor: pointer;
+    color: rgb(28, 28, 28);
+    background: rgb(173, 173, 173);
+}
