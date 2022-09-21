@@ -3,7 +3,7 @@ import * as PIXI from 'pixi.js';
 import { Assets } from '@pixi/assets';
 
 import MapConfig from 'lib/map/mapConfig';
-import { setup } from "lib/map/controls";
+import { controlsListen } from "lib/map/controls";
 import map from 'lib/map/mapConfig';
 import { VILLAGES } from 'lib/map/assets';
 
@@ -13,12 +13,18 @@ export default function MapGUI() {
     useEffect(() => {
         if (window.safari !== undefined)
             PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
-        
+
         const view = document.querySelector('#map');
         const resizeTo = document.querySelector('#map-container');
+
+        // Initial sizing.
+        view.width = resizeTo.offsetWidth;
+        view.height = resizeTo.offsetHeight;
+
         const engine =  MapConfig.pixi = new PIXI.Application({ view, resizeTo });
 
-        setup();
+
+        controlsListen();
 
         // Some placeholder villages, will be loaded from db in future
         let structures = [

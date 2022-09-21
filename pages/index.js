@@ -26,9 +26,12 @@ export default function Home() {
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
           <li>World user count</li>
-          <li>Spawn</li>
+          <li>Add profile link</li>
+          <li>Load Spawns</li>
+          <li>Pick Spawn</li>
           <li>Position</li>
           <li>Dying</li>
+          <li>Admin world create seed + spawns</li>
           <li><s>Complete profile/Onboarding</s></li>
           <li><s>Allow avatar</s></li>
           <li><s>Login</s></li>

@@ -16,5 +16,7 @@ export default function Profile() {
     { auth?.uid }
     <br />
     { auth?.displayName }
+
+    { auth?.photoURL ? <img width="5em" src={auth.photoURL} /> : null }
   </Layout>;
 }
