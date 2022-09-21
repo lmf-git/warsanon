@@ -6,6 +6,7 @@ import MapConfig from 'lib/map/mapConfig';
 import { controlsListen } from "lib/map/controls";
 import map from 'lib/map/mapConfig';
 import { VILLAGES } from 'lib/map/assets';
+import NoiseHandler from "lib/noiseHandler";
 
 import styles from '@components/Game/Map/MapGUI.module.css';
 
@@ -58,24 +59,24 @@ export default function MapGUI() {
         const terrainTiles = { 
             OCEAN: '/map/textures/OCEAN.png',
             BEACH: '/map/textures/BEACH.png',
-            SCORCHED: '/map/textures/OCEAN.png',
-            BARE: '/map/textures/OCEAN.png',
-            TUNDRA: '/map/textures/OCEAN.png',
-            SNOW: '/map/textures/OCEAN.png',
-            TEMPERATE_DESERT: '/map/textures/OCEAN.png',
-            SHRUBLAND: '/map/textures/OCEAN.png',
-            TAIGA: '/map/textures/OCEAN.png',
-            TEMPERATE_DECIDUOUS_FOREST: '/map/textures/OCEAN.png',
-            TEMPERATE_RAIN_FOREST: '/map/textures/OCEAN.png',
-            SUBTROPICAL_DESERT: '/map/textures/OCEAN.png',
-            GRASSLAND: '/map/textures/OCEAN.png',
-            TROPICAL_SEASONAL_FOREST: '/map/textures/OCEAN.png',
-            TROPICAL_RAIN_FOREST: '/map/textures/OCEAN.png'
+            SCORCHED: '/map/textures/SCORCHED.png',
+            BARE: '/map/textures/BARE.png',
+            TUNDRA: '/map/textures/TUNDRA.png',
+            SNOW: '/map/textures/SNOW.png',
+            TEMPERATE_DESERT: '/map/textures/TEMPERATE_DESERT.png',
+            SHRUBLAND: '/map/textures/SHRUBLAND.png',
+            TAIGA: '/map/textures/TAIGA.png',
+            TEMPERATE_DECIDUOUS_FOREST: '/map/textures/TEMPERATE_DECIDUOUS_FOREST.png',
+            TEMPERATE_RAIN_FOREST: '/map/textures/TEMPERATE_RAIN_FOREST.png',
+            SUBTROPICAL_DESERT: '/map/textures/SUBTROPICAL_DESERT.png',
+            GRASSLAND: '/map/textures/GRASSLAND.png',
+            TROPICAL_SEASONAL_FOREST: '/map/textures/TROPICAL_SEASONAL_FOREST.png',
+            TROPICAL_RAIN_FOREST: '/map/textures/TROPICAL_RAIN_FOREST.png'
         };
 
         
 
-        const chunkSize = 5;
+        const chunkSize = 25;
         async function loadChunk(x, y){
             //get chunk detail from game server
             const chunk = {
@@ -130,7 +131,7 @@ export default function MapGUI() {
         }
 
         //get this from game server
-        MapConfig.seed = 10;
+        MapConfig.seed = 2384832974;
         NoiseHandler.initialise();
         loadChunk(0, 0);
         //load();
