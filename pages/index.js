@@ -22,6 +22,18 @@ export default function Home() {
         </ul>
       </div>
 
+      <div style={{ 
+        marginTop: '20em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        justifyContent: 'flex-end', alignItems: 'center'
+      }}>
+        <img src="/easteregg/knight.png" />
+        <img width="250" src="/easteregg/charlie.png" />
+        <img src="/easteregg/ryan.png" />
+        <img src="/easteregg/coop.png" />
+      </div>
+
+      
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>

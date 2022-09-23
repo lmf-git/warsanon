@@ -1,6 +1,10 @@
-html, body {
+html {
     font-family: 'Merriweather', serif;
     background: rgb(45, 45, 45);
+}
+
+html, body {
+    margin: 0;
 }
 
 

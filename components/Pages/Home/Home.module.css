@@ -58,6 +58,6 @@
 
 
 .roadmap-list {
-    max-height: 10em;
-    overflow-y: scroll;
+    /* max-height: 10em; */
+    /* overflow-y: scroll; */
 }
