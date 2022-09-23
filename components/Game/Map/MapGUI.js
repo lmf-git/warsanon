@@ -43,7 +43,14 @@ export default function MapGUI() {
 
         setTimeout(() => resize(), 0);
 
+        // Load the 8 chunks around the chunk
         GameManager.loadChunk(0, 0);
+        GameManager.loadChunk(1, 1);
+        GameManager.loadChunk(-1, -1);
+        GameManager.loadChunk(-1, 0);
+        GameManager.loadChunk(1, 0);
+        GameManager.loadChunk(1, -1);
+        GameManager.loadChunk(0, -1);
     }, []);
 
     return <canvas id="map" className={styles.map} />

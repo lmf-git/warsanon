@@ -27,6 +27,7 @@ export default function Home() {
         <ul className={styles['roadmap-list']}>
           <li>World user count</li>
           <li>Add profile link</li>
+          <li>Load tiles around center to fill out map</li>
           <li>Load Spawns</li>
           <li>Pick Spawn</li>
           <li>Position</li>
