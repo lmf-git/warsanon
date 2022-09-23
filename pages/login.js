@@ -29,7 +29,7 @@ function Login() {
 
 
       // Dev only
-      'anonymous'
+      // 'anonymous'
     ],
   };
 
