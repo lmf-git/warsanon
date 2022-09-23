@@ -8,6 +8,7 @@ import { controlsListen } from "lib/map/controls";
 
 import styles from '@components/Game/Map/MapGUI.module.css';
 import GameManager from 'lib/gameManager';
+//import { chunk } from 'underscore';
 
 export default function MapGUI() {
 
@@ -33,6 +34,27 @@ export default function MapGUI() {
         window.addEventListener('resize', resize);
 
         controlsListen();
+
+        MapConfig.pixi.ticker.add(() => {
+            for(chunk in GameManager.chunks){
+                for (let i = 0; i < chunkSize; i++) {
+                    for (let j = 0; j < chunkSize; j++) {
+                        const scale = MapConfig.viewport.scale;
+                        chunk.terrain[i * chunkSize + j].sprite.x = (MapConfig.viewport.position.x + chunk.terrain[i * chunkSize + j].x) * scale + MapConfig.mapElem.width / 2;
+                        chunk.terrain[i * chunkSize + j].sprite.y = (MapConfig.viewport.position.y + chunk.terrain[i * chunkSize + j].y) * scale + MapConfig.mapElem.height / 2;
+                        chunk.terrain[i * chunkSize + j].sprite.width = scale;
+                        chunk.terrain[i * chunkSize + j].sprite.height = scale;
+                    }
+                }
+
+                for (let i = 0; i < chunk.structures.length; i++) {
+                    chunk.structures[i].sprite.x = (MapConfig.viewport.position.x + chunk.structures[i].x) * MapConfig.viewport.scale + MapConfig.mapElem.width / 2;
+                    chunk.structures[i].sprite.y = (MapConfig.viewport.position.y + chunk.structures[i].y) * MapConfig.viewport.scale + MapConfig.mapElem.height / 2;
+                    chunk.structures[i].sprite.width = MapConfig.viewport.scale;
+                    chunk.structures[i].sprite.height = MapConfig.viewport.scale;
+                }
+            }
+        });
 
         // get this from game server
         MapConfig.seed = 2384832974;
