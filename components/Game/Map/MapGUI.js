@@ -16,14 +16,21 @@ export default function MapGUI() {
             PIXI.settings.PREFER_ENV = PIXI.ENV.WEBGL;
 
         const view = document.querySelector('#map');
-        const resizeTo = document.querySelector('#map-container');
+        const container = document.querySelector('#map-container');
 
-        // Initial sizing.
-        view.width = resizeTo.offsetWidth;
-        view.height = resizeTo.offsetHeight;
+        const engine = MapConfig.pixi = new PIXI.Application({ view });
 
-        const engine =  MapConfig.pixi = new PIXI.Application({ view, resizeTo });
+        // Resize function window
+        function resize() {
+            view.width = container.offsetWidth;
+            view.height = container.offsetHeight;
 
+            const { clientWidth, clientHeight } = engine.view.parentNode;
+            engine.renderer.resize(clientWidth, clientHeight);
+        }
+
+        // Listen for window resize events
+        window.addEventListener('resize', resize);
 
         controlsListen();
 
@@ -73,8 +80,6 @@ export default function MapGUI() {
             TROPICAL_SEASONAL_FOREST: '/map/textures/TROPICAL_SEASONAL_FOREST.png',
             TROPICAL_RAIN_FOREST: '/map/textures/TROPICAL_RAIN_FOREST.png'
         };
-
-        
 
         const chunkSize = 25;
         async function loadChunk(x, y){
@@ -133,9 +138,9 @@ export default function MapGUI() {
         //get this from game server
         MapConfig.seed = 2384832974;
         NoiseHandler.initialise();
-        loadChunk(0, 0);
-        //load();
 
+        setTimeout(() => resize(), 0);
+        loadChunk(0, 0);
     }, []);
 
     return <canvas id="map" className={styles.map} />
