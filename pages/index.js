@@ -22,16 +22,36 @@ export default function Home() {
         </ul>
       </div>
 
+      <img src="/easteregg/knight.png" style={{ 
+        right: '2em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        top: '7em', alignItems: 'center'
+      }} />
+
+      {/* <div style={{ 
+        marginTop: '20em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        justifyContent: 'flex-end', alignItems: 'center'
+      }}>
+        <img width="250" src="/easteregg/charlie.png" />
+        <img src="/easteregg/ryan.png" />
+        <img src="/easteregg/coop.png" />
+      </div> */}
+
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
-          <li>World user count</li>
-          <li>Add profile link</li>
+          
+          <li>Load tiles around center to fill out map</li>
           <li>Load Spawns</li>
           <li>Pick Spawn</li>
           <li>Position</li>
           <li>Dying</li>
           <li>Admin world create seed + spawns</li>
+          <li>All tiles flash/image load/untidy</li>
+          <li>Click/select tiles</li>
+          <li><s>World user count</s></li>
+          <li><s>Add profile link</s></li>
           <li><s>Complete profile/Onboarding</s></li>
           <li><s>Allow avatar</s></li>
           <li><s>Login</s></li>
