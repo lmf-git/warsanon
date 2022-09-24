@@ -36,7 +36,8 @@ export default function MapGUI() {
         controlsListen();
 
         MapConfig.pixi.ticker.add(() => {
-            for(chunk in GameManager.chunks){
+            const { chunkSize } = GameManager;
+            GameManager.chunks.map(chunk => {
                 for (let i = 0; i < chunkSize; i++) {
                     for (let j = 0; j < chunkSize; j++) {
                         const scale = MapConfig.viewport.scale;
@@ -53,7 +54,7 @@ export default function MapGUI() {
                     chunk.structures[i].sprite.width = MapConfig.viewport.scale;
                     chunk.structures[i].sprite.height = MapConfig.viewport.scale;
                 }
-            }
+            });
         });
 
         // get this from game server
