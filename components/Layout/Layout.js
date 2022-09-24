@@ -24,25 +24,33 @@ export default function Layout({ children, showActions = true }) {
 
             {/* { auth ? auth.uid : null } */}
 
-            { showActions ?
-                <div className={styles['header-actions']}>
-                    { 
-                        context.auth ? 
-                        <Link href="/worlds">
-                            <a className={styles['header-actions-item']}>
-                                Play
-                            </a>
-                        </Link>
-                        :
-                        <Link href="/login">
-                            <a className={styles['header-actions-item']}>
-                                Login
-                            </a>
-                        </Link>
-                    }
-                </div>
-                :
-                null
+            { 
+                showActions ?
+                    <div className={styles['header-actions']}>
+                        {
+                            context.auth ? 
+                                <>
+                                    <Link href="/profile">
+                                        <a className={styles['header-actions-item']}>
+                                            Profile
+                                        </a>
+                                    </Link>
+                                    <Link href="/worlds">
+                                        <a style={{ background: '#cb0e10' }} className={styles['header-actions-item']}>
+                                            Play
+                                        </a>
+                                    </Link>
+                                </>
+                                :
+                                <Link href="/login">
+                                    <a className={styles['header-actions-item']}>
+                                        Login
+                                    </a>
+                                </Link>
+                        }
+                    </div>
+                    :
+                    null
             }
         </div>
 

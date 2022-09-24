@@ -4,11 +4,10 @@ import Link from 'next/link';
 
 import MapConfig from '../lib/map/mapConfig';
 import useProtected from "lib/useProtected";
-import useEntireScreen from "lib/useEntireScreen";
+import useEntireScreen from "lib/map/useEntireScreen";
 
 import MapGUI from '@components/Game/Map/MapGUI';
 import SpawnOverlay from "@components/Game/Map/SpawnOverlay/SpawnOverlay";
-import GameManager from "lib/gameManager";
 
 import styles from '@components/Game/Map/MapGUI.module.css';
 
@@ -21,12 +20,10 @@ export default function MapPage() {
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
 
+  console.log(position);
+
   useProtected();
   useEntireScreen();
-
-  // Bootstrap game.
-  // Will need a guard to always redirect to map unless spawned.
-  useEffect(() => GameManager.bootstrap(setOverlay), []);
 
   return <>
     <Head>
@@ -43,7 +40,7 @@ export default function MapPage() {
     
     <div className={styles['map-overview']}>
       <div id="map-container" className={styles['terrain']}>
-        <MapGUI />
+        <MapGUI setOverlay={setOverlay} />
       </div>
       { !sidebarOpen ? null :
         <div className={styles['sidebar']}>

@@ -19,7 +19,6 @@ export default function Worlds() {
   
   const [worlds, setWorlds] = useState({});
 
-
   // TODO: Create useUser hook to load additional data (registered worlds)
 
   useEffect(() => {
@@ -30,7 +29,7 @@ export default function Worlds() {
       
       // Load available worlds.
       const dbRef = ref(getDatabase());
-      const worldsSnapshot = await get(child(dbRef, `worlds`));
+      const worldsSnapshot = await get(child(dbRef, `worlds_meta`));
       setWorlds(worldsSnapshot.val());
 
       // console.log(worldsSnapshot.val());
@@ -49,59 +48,61 @@ export default function Worlds() {
  
   return (
     <Layout showActions={false}>
-      <h1 className={styles.title}>Worlds</h1>
-      <div className={styles.worlds}>
-        {
-          Object.keys(worlds).map(w => 
-            <div 
-              className={styles.world}
-              key={`w-${w}`}>
+      <div className="panel">
+        <h1 className={styles.title}>Worlds</h1>
+        <div className={styles.worlds}>
+          {
+            Object.keys(worlds).map(w => 
+              <div 
+                className={styles.world}
+                key={`w-${w}`}>
 
-              <h2 className={styles['world-name']}>
-                { worlds[w].name }
-              </h2>
+                <h2 className={styles['world-name']}>
+                  { worlds[w].name }
+                </h2>
 
-              <div>
-                Users: ?
+                <div>
+                  Users: { worlds[w].count }
+                </div>
+
+                {/* Generate image for the world */}
+                {/* <img src="" /> */}
+
+                {/* account */}
+                { 
+                  !account?.worlds[w] ?
+                  <button className={styles.register} onClick={async () => {
+                    // alert('Registering');
+                    register(w);
+
+                    console.log(account);
+
+                    const updatedAccount = account;
+                    updatedAccount.worlds[w] = true;
+
+                    console.log(updatedAccount);
+
+                    setAccount(updatedAccount);
+                  }}>
+                    Register
+                  </button>
+                  :
+                  <button
+                    className={styles.play} 
+                    onClick={() => {
+                      WorldManager.set(w);
+                      router.push('/map');
+                  }}>
+                    Play
+                  </button>
+                }
+
+                {/* Show special if current world? */}
+                {/* If currentWorld skip this page to the game? */}
               </div>
-
-              {/* Generate image for the world */}
-              {/* <img src="" /> */}
-
-              {/* account */}
-              { 
-                !account?.worlds[w] ?
-                <button className={styles.register} onClick={async () => {
-                  // alert('Registering');
-                  register(w);
-
-                  console.log(account);
-
-                  const updatedAccount = account;
-                  updatedAccount.worlds[w] = true;
-
-                  console.log(updatedAccount);
-
-                  setAccount(updatedAccount);
-                }}>
-                  Register
-                </button>
-                :
-                <button
-                  className={styles.play} 
-                  onClick={() => {
-                    WorldManager.set(w);
-                    router.push('/map');
-                }}>
-                  Play
-                </button>
-              }
-
-              {/* Show special if current world? */}
-              {/* If currentWorld skip this page to the game? */}
-            </div>
-          )
-        }
+            )
+          }
+        </div>
       </div>
     </Layout>
   );
