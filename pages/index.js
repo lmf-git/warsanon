@@ -42,14 +42,22 @@ export default function Home() {
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
           
+
           <li>Load tiles around center to fill out map</li>
-          <li>Load Spawns</li>
+          <li>Simulate some game log events</li>
+          <li>Move camera when selecting spawns</li>
+          <li>-</li>
+
+          <li>Chat/game log feed</li>
+          <li>Add player spawned to game world/chat log</li>
+          <li>Turn off render loop whenever possible</li>
           <li>Pick Spawn</li>
           <li>Position</li>
           <li>Dying</li>
           <li>Admin world create seed + spawns</li>
           <li>All tiles flash/image load/untidy</li>
           <li>Click/select tiles</li>
+          <li><s>Load Spawns</s></li>
           <li><s>World user count</s></li>
           <li><s>Add profile link</s></li>
           <li><s>Complete profile/Onboarding</s></li>

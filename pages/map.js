@@ -10,6 +10,8 @@ import MapGUI from '@components/Game/Map/MapGUI';
 import SpawnOverlay from "@components/Game/Map/SpawnOverlay/SpawnOverlay";
 
 import styles from '@components/Game/Map/MapGUI.module.css';
+import Log from "@components/Game/Map/Log/Log";
+import Tooltip from "@components/Game/Map/Tooltip/Tooltip";
 
 export default function MapPage() {
   const [overlay, setOverlay] = useState(null);
@@ -47,6 +49,11 @@ export default function MapPage() {
           Test
         </div>
       }
+
+      <Tooltip position={position} />
+
+      <Log />
+
       { overlay === 'spawn' ? <SpawnOverlay setOverlay={setOverlay} /> : null }
     </div>
   </>
