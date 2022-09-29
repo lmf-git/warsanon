@@ -25,19 +25,23 @@ export default function MapGUI({ setOverlay, chunks, position }) {
     }, []);
 
     return <div id="map" className={styles['map-wrapper']}>
-        <div id="viewport" className={styles['map-viewport']}>
+        <div id="viewport" className={styles['map-viewport']}
+            style={{
+                top: `calc(${position.y} * 100%)`,
+                left: `calc(${position.x} * 100%)`,
+            }}>
             { chunks.map((chunk, cI) => 
                 // TODO: Make into real class css module rule
                 <div 
+                    className={styles.chunk} key={`chunk-${cI}`}
                     style={{
-                        top: `calc(${position.y} * 100%)`,
-                        left: `calc(${position.x} * 100%)`,
-                    }} 
-                    className={styles.chunk} key={`chunk-${cI}`}>
+                        top: `calc(${chunk.y} * 100%)`,
+                        left: `calc(${chunk.x} * 100%)`,
+                    }}>
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
-                        <div className={styles.tile} key={`chunk-${tI}`}>
-                            {tile.x}|{tile.y}
+                        <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
+                            {tile.y}|{tile.x}
                         </div>
                     )}
                 </div>

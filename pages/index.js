@@ -68,7 +68,16 @@ export default function Home() {
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
-          
+          <li>Chunk positioning</li>
+
+          <li><u>Controls</u></li>
+          <li>Resize</li>
+          <li>Drag</li>
+          <li>Zoom</li>
+
+          <li>-</li>
+
+
           <li>New and simple map dragging mechanism</li>
           
           <li>Texture loading</li>

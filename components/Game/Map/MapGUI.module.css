@@ -73,4 +73,14 @@
 
 .tile {
     flex: 6.66% 0 0;
+    cursor: pointer;
+
+    opacity: 0;
+    transition: opacity .2s, color .2s;
+    opacity: 1;
+}
+
+.tile:hover {
+    opacity: 0.75;
+    color: white;
 }
