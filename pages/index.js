@@ -1,6 +1,6 @@
 import Head from 'next/head';
-
 import Layout from '@components/Layout/Layout';
+
 import styles from '@components/Pages/Home/Home.module.css';
 
 
@@ -28,7 +28,8 @@ export default function Home() {
         top: '7em', alignItems: 'center'
       }} />
 
-      {/* <div style={{ 
+      {/* 
+      <div style={{ 
         marginTop: '20em',
         position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
         justifyContent: 'flex-end', alignItems: 'center'
@@ -36,13 +37,16 @@ export default function Home() {
         <img width="250" src="/easteregg/charlie.png" />
         <img src="/easteregg/ryan.png" />
         <img src="/easteregg/coop.png" />
-      </div> */}
+      </div> 
+      */}
 
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
           
-
+          <li>New and simple map dragging mechanism</li>
+          
+          <li>Texture loading</li>
           <li>Load tiles around center to fill out map</li>
           <li>Simulate some game log events</li>
           <li>Move camera when selecting spawns</li>
@@ -57,6 +61,7 @@ export default function Home() {
           <li>Admin world create seed + spawns</li>
           <li>All tiles flash/image load/untidy</li>
           <li>Click/select tiles</li>
+          <li><s>HTML approach to map</s></li>
           <li><s>Load Spawns</s></li>
           <li><s>World user count</s></li>
           <li><s>Add profile link</s></li>

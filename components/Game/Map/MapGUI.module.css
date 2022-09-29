@@ -40,8 +40,37 @@
     border-bottom-width: 0.5em;
 }
 
-.map {
+.map-viewport {
+    position: absolute;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+
+    /* transition: top 1.35s ease, left 1.35s ease; */
+    will-change: top, left;
+
+    /* The default starting position of viewport may need calculating (finding ventre */
+    /* top: 0; */
+    /* left: 0; */
+
+    /* TODO: Ryan, read this you little prick; */
+    /* The entire "world" can be shifted using the following two properties */
+    /* top: 500px; */
+    /* left: 500px; */
+}
+
+.map-wrapper {
+
+}
+
+.chunk {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.tile {
+    flex: 6.66% 0 0;
 }

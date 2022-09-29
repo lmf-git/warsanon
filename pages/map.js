@@ -18,6 +18,12 @@ export default function MapPage() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const [chunks, setChunks] = useState([]);
+
+  // Share rendering to React.
+  MapConfig.viewport.chunks = chunks;
+  MapConfig.viewport.setChunks = setChunks;
+
   // Share to rest of client.
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
@@ -42,7 +48,11 @@ export default function MapPage() {
     
     <div className={styles['map-overview']}>
       <div id="map-container" className={styles['terrain']}>
-        <MapGUI setOverlay={setOverlay} />
+        <MapGUI 
+          setOverlay={setOverlay} 
+          chunks={chunks} 
+          position={position} 
+        />
       </div>
       { !sidebarOpen ? null :
         <div className={styles['sidebar']}>

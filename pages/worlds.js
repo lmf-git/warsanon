@@ -44,6 +44,9 @@ export default function Worlds() {
   const register = (world) => {
     const db = getDatabase();
     set(ref(db, `accounts/${auth.uid}/worlds/${world}`), true);
+
+    // Update the user counter
+    // allow update: if request.resource.data.likes > resource.data.likes;
   }
  
   return (
