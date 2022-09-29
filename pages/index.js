@@ -28,6 +28,31 @@ export default function Home() {
         top: '7em', alignItems: 'center'
       }} />
 
+      <img src="/easteregg/picnic.png" style={{ 
+        bottom: '2em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        left: '3.5em', alignItems: 'center'
+      }} />
+
+      <img src="/easteregg/ryan.png" style={{ 
+        bottom: '.5em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        right: '2.4em', alignItems: 'center'
+      }} />
+
+      <img src="/easteregg/coop.png" style={{ 
+        bottom: '4.1em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        right: '50%', alignItems: 'center'
+      }} />
+
+      <img src="/easteregg/alex.png" style={{ 
+        top: '4em',
+        width: '7em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        left: '3em', alignItems: 'center'
+      }} />
+
       {/* 
       <div style={{ 
         marginTop: '20em',
