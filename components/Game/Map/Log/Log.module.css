@@ -1,0 +1,9 @@
+.log {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 50%;
+    color: white;
+    padding: 1em;
+}

@@ -1,6 +1,6 @@
 import Head from 'next/head';
-
 import Layout from '@components/Layout/Layout';
+
 import styles from '@components/Pages/Home/Home.module.css';
 
 
@@ -28,7 +28,33 @@ export default function Home() {
         top: '7em', alignItems: 'center'
       }} />
 
-      {/* <div style={{ 
+      <img src="/easteregg/picnic.png" style={{ 
+        bottom: '2em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        left: '3.5em', alignItems: 'center'
+      }} />
+
+      <img src="/easteregg/ryan.png" style={{ 
+        bottom: '.5em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        right: '2.4em', alignItems: 'center'
+      }} />
+
+      <img src="/easteregg/coop.png" style={{ 
+        bottom: '4.1em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        right: '50%', alignItems: 'center'
+      }} />
+
+      <img src="/easteregg/alex.png" style={{ 
+        top: '4em',
+        width: '7em',
+        position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
+        left: '3em', alignItems: 'center'
+      }} />
+
+      {/* 
+      <div style={{ 
         marginTop: '20em',
         position: 'absolute', zIndex: -1, display: 'flex', flexWrap: 'wrap',
         justifyContent: 'flex-end', alignItems: 'center'
@@ -36,20 +62,41 @@ export default function Home() {
         <img width="250" src="/easteregg/charlie.png" />
         <img src="/easteregg/ryan.png" />
         <img src="/easteregg/coop.png" />
-      </div> */}
+      </div> 
+      */}
 
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
+          <li>Chunk positioning</li>
+
+          <li><u>Controls</u></li>
+          <li>Resize</li>
+          <li>Drag</li>
+          <li>Zoom</li>
+
+          <li>-</li>
+
+
+          <li>New and simple map dragging mechanism</li>
           
+          <li>Texture loading</li>
           <li>Load tiles around center to fill out map</li>
-          <li>Load Spawns</li>
+          <li>Simulate some game log events</li>
+          <li>Move camera when selecting spawns</li>
+          <li>-</li>
+
+          <li>Chat/game log feed</li>
+          <li>Add player spawned to game world/chat log</li>
+          <li>Turn off render loop whenever possible</li>
           <li>Pick Spawn</li>
           <li>Position</li>
           <li>Dying</li>
           <li>Admin world create seed + spawns</li>
           <li>All tiles flash/image load/untidy</li>
           <li>Click/select tiles</li>
+          <li><s>HTML approach to map</s></li>
+          <li><s>Load Spawns</s></li>
           <li><s>World user count</s></li>
           <li><s>Add profile link</s></li>
           <li><s>Complete profile/Onboarding</s></li>
