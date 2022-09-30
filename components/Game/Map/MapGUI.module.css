@@ -19,15 +19,16 @@
 }
 
 .map-overview {
-    display: flex;
     height: 100%;
     z-index: 1;
 }
 
 .terrain {
-    flex: auto;
     position: relative;
     overflow: hidden;
+
+    width: 100%;
+    height: 100%;
 }
 
 .sidebar {
@@ -45,29 +46,18 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-
-    /* transition: top 1.35s ease, left 1.35s ease; */
     will-change: top, left;
-
-    /* The default starting position of viewport may need calculating (finding ventre */
-    /* top: 0; */
-    /* left: 0; */
-
-    /* TODO: Ryan, read this you little prick; */
-    /* The entire "world" can be shifted using the following two properties */
-    /* top: 500px; */
-    /* left: 500px; */
 }
 
 .map-wrapper {
-
+    height: 100%;
 }
 
 .chunk {
     display: flex;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
     flex-wrap: wrap;
 }
 

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import MapConfig from 'lib/map/mapConfig';
 import MapManager from 'lib/map/mapManager';
 import NoiseHandler from "lib/map/noiseHandler";
-import { controlsListen } from "lib/map/controls";
+import { controlsListen, controlsUnlisten } from "lib/map/controls";
 
 import styles from '@components/Game/Map/MapGUI.module.css';
 
@@ -17,11 +17,16 @@ export default function MapGUI({ setOverlay, chunks, position }) {
         // Bootstrap game.
         MapManager.bootstrap(setOverlay);
 
-        // Load the 8 chunks around the chunk.
-        MapManager.populateScreenChunks();
-
-        // Start listening for controller input.
+        // Attach controls.
         controlsListen();
+
+        // Detach and cleanup.
+        return function cleanup() {
+            // controlsUnlisten
+
+            // Remove resize handler.
+            window.removeEventListener('resize', MapManager.resize);
+        }
     }, []);
 
     return <div id="map" className={styles['map-wrapper']}>
@@ -34,10 +39,10 @@ export default function MapGUI({ setOverlay, chunks, position }) {
                 // TODO: Make into real class css module rule
                 <div 
                     className={styles.chunk} key={`chunk-${cI}`}
-                    style={{
-                        top: `calc(${chunk.y} * 100%)`,
-                        left: `calc(${chunk.x} * 100%)`,
-                    }}>
+                    style={MapManager.calcChunkScreenPos(chunk)}>
+
+                    {/* <span>X: {chunk.x} | Y: {chunk.y}</span> */}
+
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
                         <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
