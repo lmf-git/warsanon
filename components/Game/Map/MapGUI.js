@@ -17,14 +17,8 @@ export default function MapGUI({ setOverlay, chunks, position }) {
         // Bootstrap game.
         MapManager.bootstrap(setOverlay);
 
-        // Load the 8 chunks around the chunk.
-        MapManager.populateScreenChunks();
-
-        // Start listening for controller input.
+        // Attach controls.
         controlsListen();
-
-        // Attach resize handler.
-        window.addEventListener('resize', MapManager.resize);
 
         // Detach and cleanup.
         return function cleanup() {

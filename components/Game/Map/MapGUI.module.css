@@ -19,15 +19,16 @@
 }
 
 .map-overview {
-    display: flex;
     height: 100%;
     z-index: 1;
 }
 
 .terrain {
-    flex: auto;
     position: relative;
     overflow: hidden;
+
+    width: 100%;
+    height: 100%;
 }
 
 .sidebar {
@@ -49,7 +50,7 @@
 }
 
 .map-wrapper {
-
+    height: 100%;
 }
 
 .chunk {
