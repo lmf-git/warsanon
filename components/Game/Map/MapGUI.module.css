@@ -45,18 +45,7 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-
-    /* transition: top 1.35s ease, left 1.35s ease; */
     will-change: top, left;
-
-    /* The default starting position of viewport may need calculating (finding ventre */
-    /* top: 0; */
-    /* left: 0; */
-
-    /* TODO: Ryan, read this you little prick; */
-    /* The entire "world" can be shifted using the following two properties */
-    /* top: 500px; */
-    /* left: 500px; */
 }
 
 .map-wrapper {
