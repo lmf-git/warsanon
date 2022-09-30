@@ -38,6 +38,9 @@ export default function MapGUI({ setOverlay, chunks, position }) {
                         top: `calc(${chunk.y} * 100%)`,
                         left: `calc(${chunk.x} * 100%)`,
                     }}>
+
+                    <span>X: {chunk.x} | Y: {chunk.y}</span>
+                    
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
                         <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
