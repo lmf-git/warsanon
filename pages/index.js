@@ -68,11 +68,8 @@ export default function Home() {
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
-          <li>Chunk positioning</li>
 
           <li><u>Controls</u></li>
-          <li>Resize</li>
-          <li>Drag</li>
           <li>Zoom</li>
 
           <li>-</li>
@@ -93,8 +90,12 @@ export default function Home() {
           <li>Position</li>
           <li>Dying</li>
           <li>Admin world create seed + spawns</li>
-          <li>All tiles flash/image load/untidy</li>
+
           <li>Click/select tiles</li>
+
+          <li><s>Chunk positioning</s></li>
+          <li><s>Resize</s></li>
+          <li><s>Drag</s></li>
           <li><s>HTML approach to map</s></li>
           <li><s>Load Spawns</s></li>
           <li><s>World user count</s></li>
