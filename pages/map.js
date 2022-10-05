@@ -35,7 +35,7 @@ export default function MapPage() {
     console.log('Checking chunks');
     console.log(position);
     
-    //TODO This shouldn't need negatin 
+    //TODO This shouldn't need negating
     const currentChunk = {
       x: -Math.round(position.x),
       y: -Math.round(position.y)
