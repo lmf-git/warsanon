@@ -3,8 +3,9 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import WorldManager from 'lib/worldManager';
 
 import styles from '@components/Game/Map/SpawnOverlay/SpawnOverlay.module.css';
+import MapManager from 'lib/map/mapManager';
 
-export default function SpawnOverlay({ setOverlay }) {
+export default function SpawnOverlay({ setOverlay, setPosition }) {
     const [spawnChoice, setSpawnChoice] = useState(null);
     const [spawns, setSpawns] = useState([]);
 
@@ -12,7 +13,12 @@ export default function SpawnOverlay({ setOverlay }) {
         console.log(ev);
         console.log(ev.target.value);
 
-        alert('Camera should move to spawn pos');
+        // alert('Camera should move to spawn pos');
+
+        // Update camera position.
+        setPosition({ x: spawn.x / MapManager.chunkSize, y: spawn.y / MapManager.chunkSize });
+
+        setTimeout(() => MapManager.populateScreenChunks(), 0);
 
         setSpawnChoice(spawn);
         return false;
@@ -50,7 +56,7 @@ export default function SpawnOverlay({ setOverlay }) {
             // Close overlay after 3 seconds, basic test.
             // setOverlay(null);
         // }, 3000);
-    });
+    }, []);
 
 
 
@@ -71,6 +77,8 @@ export default function SpawnOverlay({ setOverlay }) {
                                 className={styles.label}
                                 htmlFor={`spawn-choice-${spawnIndex}`}>
                                 { spawn.name }
+                                &nbsp;
+                                { spawn.x }|{ spawn.y }
                             </label>
                         </div>
                     )
@@ -78,7 +86,9 @@ export default function SpawnOverlay({ setOverlay }) {
             </div>
             {
                 spawnChoice ?
-                    <button className={styles.confirm}>Spawn At {spawnChoice.name}</button>
+                    <button className={styles.confirm}>
+                        Spawn At {spawnChoice.name}
+                    </button>
                     :
                     null
             }

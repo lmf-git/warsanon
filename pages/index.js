@@ -70,29 +70,33 @@ export default function Home() {
         <ul className={styles['roadmap-list']}>
 
           <li><u>Controls</u></li>
+          <li>Move viewport to coordinate centred</li>
+          <li>Mobile drag</li>
           <li>Zoom</li>
 
           <li>-</li>
 
-
-          <li>New and simple map dragging mechanism</li>
-          
-          <li>Texture loading</li>
+          <li>Track loaded chunks</li>
           <li>Load tiles around center to fill out map</li>
-          <li>Simulate some game log events</li>
+          <li>-</li>
+          
+
           <li>Move camera when selecting spawns</li>
+          <li>Add player spawned to game world/chat log</li>
+          <li>Pick Spawn</li>
           <li>-</li>
 
-          <li>Chat/game log feed</li>
-          <li>Add player spawned to game world/chat log</li>
-          <li>Turn off render loop whenever possible</li>
-          <li>Pick Spawn</li>
-          <li>Position</li>
+          <li>Moving</li>
+          <li>Fighting</li>
           <li>Dying</li>
+          <li>Gathering</li>
+          <li>Building</li>
+          <li>Trading</li>
           <li>Admin world create seed + spawns</li>
 
-          <li>Click/select tiles</li>
-
+          <li><s>Simulate some game log events</s></li>
+          <li><s>Click/select tiles</s></li>
+          <li><s>Chat/game log feed</s></li>
           <li><s>Chunk positioning</s></li>
           <li><s>Resize</s></li>
           <li><s>Drag</s></li>
