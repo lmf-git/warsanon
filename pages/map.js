@@ -34,10 +34,11 @@ export default function MapPage() {
   useEffect(() => {
     console.log('Checking chunks');
     console.log(position);
-
+    
+    //TODO This shouldn't need negatin 
     const currentChunk = {
-      x: Math.round(position.x * MapManager.chunkSize),
-      y: Math.round(position.x * MapManager.chunkSize)
+      x: -Math.round(position.x),
+      y: -Math.round(position.y)
     };
     console.log(currentChunk);
 
