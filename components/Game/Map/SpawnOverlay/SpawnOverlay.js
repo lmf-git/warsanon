@@ -14,21 +14,24 @@ export default function SpawnOverlay({ setOverlay, setPosition }) {
         console.log(ev.target.value);
 
         // alert('Camera should move to spawn pos');
+        console.log(spawns);
+        console.log(spawn);
 
-        // Load the 
+        // Calculate the 
         const target = {
-            x: spawn.x / MapManager.chunkSize, 
-            y: spawn.y / MapManager.chunkSize
+            x: spawn.x, 
+            y: spawn.y
         };
 
         // Update camera position.
         setPosition(target);
 
+        // Load the peripheral chunks.
+        // NOTE: Could show on the UI some tabs highlighting what's going on N/W/E/S directions.
         setTimeout(() => MapManager.populateScreenChunks(), 0);
 
         setSpawnChoice(spawn);
 
-        
         return false;
     }
 

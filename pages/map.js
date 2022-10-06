@@ -17,7 +17,7 @@ import styles from '@components/Game/Map/MapGUI.module.css';
 
 export default function MapPage() {
   const [overlay, setOverlay] = useState(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 500, y: 500 });
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [chunks, setChunks] = useState([]);

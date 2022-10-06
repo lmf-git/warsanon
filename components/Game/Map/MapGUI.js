@@ -46,7 +46,7 @@ export default function MapGUI({ setOverlay, chunks, position }) {
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
                         <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
-                            {tile.y}|{tile.x}
+                            {-tile.x}|{-tile.y}
                         </div>
                     )}
                 </div>
