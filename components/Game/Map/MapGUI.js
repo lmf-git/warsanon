@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import MapConfig from 'lib/map/mapConfig';
 import MapManager from 'lib/map/mapManager';
@@ -8,6 +8,7 @@ import { controlsListen, controlsUnlisten } from "lib/map/controls";
 import styles from '@components/Game/Map/MapGUI.module.css';
 
 export default function MapGUI({ setOverlay, chunks, position }) {
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         // TODO: Get this from game server.
@@ -15,7 +16,7 @@ export default function MapGUI({ setOverlay, chunks, position }) {
         NoiseHandler.initialise();
 
         // Bootstrap game.
-        MapManager.bootstrap(setOverlay);
+        MapManager.bootstrap(setOverlay, setOffset);
 
         // Attach controls.
         controlsListen();
@@ -32,8 +33,10 @@ export default function MapGUI({ setOverlay, chunks, position }) {
     return <div id="map" className={styles['map-wrapper']}>
         <div id="viewport" className={styles['map-viewport']}
             style={{
-                top: `calc(${position.y} * 100%)`,
-                left: `calc(${position.x} * 100%)`,
+                // top: `calc(${position.y} + ${centeredOffsetX}px * 100%)`,
+                // left: `calc(${position.x} + ${centeredOffsetY}px * 100%)`,
+                top: `calc((${position.y} * 100%) + ${offset.x}px)`,
+                left: `calc((${position.x} * 100%) + ${offset.y}px)`,
             }}>
             { chunks.map((chunk, cI) => 
                 // TODO: Make into real class css module rule
