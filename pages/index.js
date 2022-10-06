@@ -70,18 +70,13 @@ export default function Home() {
         <ul className={styles['roadmap-list']}>
 
           <li><u>Controls</u></li>
-          <li>Move viewport to coordinate centred</li>
+          
           <li>Mobile drag</li>
           <li>Zoom</li>
 
           <li>-</li>
 
-          <li>Track loaded chunks</li>
-          <li>Load tiles around center to fill out map</li>
           <li>-</li>
-          
-
-          <li>Move camera when selecting spawns</li>
           <li>Add player spawned to game world/chat log</li>
           <li>Pick Spawn</li>
           <li>-</li>
@@ -93,7 +88,14 @@ export default function Home() {
           <li>Building</li>
           <li>Trading</li>
           <li>Admin world create seed + spawns</li>
+        </ul>
 
+        <h2>Completed</h2>
+        <ul className={styles['roadmap-list']} style={{ height: '10em', overflowY: 'scroll', textDecoration: 'strikethrough' }}>
+          <li><s>Move camera when selecting spawns</s></li>
+          <li><s>Track loaded chunks</s></li>
+          <li><s>Load tiles around center to fill out map</s></li>
+          <li><s>Move viewport to coordinate centred</s></li>
           <li><s>Simulate some game log events</s></li>
           <li><s>Click/select tiles</s></li>
           <li><s>Chat/game log feed</s></li>
