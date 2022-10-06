@@ -68,9 +68,9 @@ export default function Home() {
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
-
-          <li><u>Controls</u></li>
           
+          <li>Map centered offset</li>
+
           <li>Mobile drag</li>
           <li>Zoom</li>
 
@@ -92,6 +92,7 @@ export default function Home() {
 
         <h2>Completed</h2>
         <ul className={styles['roadmap-list']} style={{ height: '10em', overflowY: 'scroll', textDecoration: 'strikethrough' }}>
+          <li>Load before position change</li>
           <li><s>Move camera when selecting spawns</s></li>
           <li><s>Track loaded chunks</s></li>
           <li><s>Load tiles around center to fill out map</s></li>

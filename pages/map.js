@@ -30,9 +30,6 @@ export default function MapPage() {
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
 
-  // Chunk loader based on position updates.
-  useEffect(() => MapManager.chunking(), [position]);
-
   useProtected();
   useEntireScreen();
 

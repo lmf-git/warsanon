@@ -30,13 +30,15 @@ export default function MapGUI({ setOverlay, chunks, position }) {
         }
     }, []);
 
+    // Chunk loader based on position updates.
+    useEffect(() => MapManager.chunking(), [position]);
+
     return <div id="map" className={styles['map-wrapper']}>
         <div id="viewport" className={styles['map-viewport']}
             style={{
-                // top: `calc(${position.y} + ${centeredOffsetX}px * 100%)`,
-                // left: `calc(${position.x} + ${centeredOffsetY}px * 100%)`,
-                top: `calc((${position.y} * 100%) + ${offset.x}px)`,
-                left: `calc((${position.x} * 100%) + ${offset.y}px)`,
+                top: `calc(${position.y} * 100%)`,
+                left: `calc(${position.x} * 100%)`,
+                // transform: `translate(-${offset.x}px, -${offset.y}px)`
             }}>
             { chunks.map((chunk, cI) => 
                 // TODO: Make into real class css module rule
@@ -44,12 +46,10 @@ export default function MapGUI({ setOverlay, chunks, position }) {
                     className={styles.chunk} key={`chunk-${cI}`}
                     style={MapManager.calcChunkScreenPos(chunk)}>
 
-                    {/* <span>X: {chunk.x} | Y: {chunk.y}</span> */}
-                    
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
                         <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
-                            {-tile.x}|{-tile.y}
+                            {tile.x}|{tile.y}
                         </div>
                     )}
                 </div>
