@@ -45,7 +45,7 @@ export default function MapGUI({ setOverlay, chunks, position }) {
                     style={MapManager.calcChunkScreenPos(chunk)}>
 
                     {/* <span>X: {chunk.x} | Y: {chunk.y}</span> */}
-
+                    
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
                         <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
