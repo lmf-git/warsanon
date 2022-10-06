@@ -31,24 +31,7 @@ export default function MapPage() {
   MapConfig.viewport.setPosition = setPosition;
 
   // Chunk loader based on position updates.
-  useEffect(() => {
-    console.log('Checking chunks');
-    console.log(position);
-    
-    //TODO This shouldn't need negating
-    const currentChunk = {
-      x: -Math.round(position.x),
-      y: -Math.round(position.y)
-    };
-    console.log(currentChunk);
-
-    // Check if chunk loading required.
-    if (!MapManager.chunkLoaded(currentChunk.x, currentChunk.y))
-      MapManager.addChunk(currentChunk.x, currentChunk.y);
-
-    console.log(MapConfig.chunksMeta);
-
-  }, [position]);
+  useEffect(() => MapManager.chunking(), [position]);
 
   useProtected();
   useEntireScreen();

@@ -15,12 +15,20 @@ export default function SpawnOverlay({ setOverlay, setPosition }) {
 
         // alert('Camera should move to spawn pos');
 
+        // Load the 
+        const target = {
+            x: spawn.x / MapManager.chunkSize, 
+            y: spawn.y / MapManager.chunkSize
+        };
+
         // Update camera position.
-        setPosition({ x: spawn.x / MapManager.chunkSize, y: spawn.y / MapManager.chunkSize });
+        setPosition(target);
 
         setTimeout(() => MapManager.populateScreenChunks(), 0);
 
         setSpawnChoice(spawn);
+
+        
         return false;
     }
 
