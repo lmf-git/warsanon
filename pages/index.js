@@ -68,45 +68,58 @@ export default function Home() {
       <div className={[styles.roadmap, 'panel'].join(' ')}>
         <h2>Roadmap</h2>
         <ul className={styles['roadmap-list']}>
+          
+          
 
-          <li><u>Controls</u></li>
+          <li>Coordinate pointer number top right</li>
+
+          <li>Load from query params</li>
+
+          <li>Mobile drag</li>
           <li>Zoom</li>
 
           <li>-</li>
 
-
-          <li>New and simple map dragging mechanism</li>
-          
-          <li>Texture loading</li>
-          <li>Load tiles around center to fill out map</li>
-          <li>Simulate some game log events</li>
-          <li>Move camera when selecting spawns</li>
+          <li>-</li>
+          <li>Add player spawned to game world/chat log</li>
+          <li>Pick Spawn</li>
           <li>-</li>
 
-          <li>Chat/game log feed</li>
-          <li>Add player spawned to game world/chat log</li>
-          <li>Turn off render loop whenever possible</li>
-          <li>Pick Spawn</li>
-          <li>Position</li>
+          <li>Moving</li>
+          <li>Fighting</li>
           <li>Dying</li>
+          <li>Gathering</li>
+          <li>Building</li>
+          <li>Trading</li>
           <li>Admin world create seed + spawns</li>
+        </ul>
 
+        <h2>Completed</h2>
+        <ul className={styles['roadmap-list']} style={{ height: '10em', overflowY: 'scroll', textDecoration: 'line-through' }}>
+          <li>Add crosshair</li>
+          <li>Map centered offset</li>
+          <li>Load before position change</li>
+          <li>Move camera when selecting spawns</li>
+          <li>Track loaded chunks</li>
+          <li>Load tiles around center to fill out map</li>
+          <li>Move viewport to coordinate centred</li>
+          <li>Simulate some game log events</li>
           <li>Click/select tiles</li>
-
-          <li><s>Chunk positioning</s></li>
-          <li><s>Resize</s></li>
-          <li><s>Drag</s></li>
-          <li><s>HTML approach to map</s></li>
-          <li><s>Load Spawns</s></li>
-          <li><s>World user count</s></li>
-          <li><s>Add profile link</s></li>
-          <li><s>Complete profile/Onboarding</s></li>
-          <li><s>Allow avatar</s></li>
-          <li><s>Login</s></li>
-          <li><s>World select</s></li>
-          <li><s>World register</s></li>
-          <li><s>Add AuthContext and useAuthContext</s></li>
-          <li><s>Create protected/incomplete profile guard as effect</s></li>
+          <li>Chat/game log feed</li>
+          <li>Chunk positioning</li>
+          <li>Resize</li>
+          <li>Drag</li>
+          <li>HTML approach to map</li>
+          <li>Load Spawns</li>
+          <li>World user count</li>
+          <li>Add profile link</li>
+          <li>Complete profile/Onboarding</li>
+          <li>Allow avatar</li>
+          <li>Login</li>
+          <li>World select</li>
+          <li>World register</li>
+          <li>Add AuthContext and useAuthContext</li>
+          <li>Create protected/incomplete profile guard as effect</li>
         </ul>
       </div>
     </Layout>

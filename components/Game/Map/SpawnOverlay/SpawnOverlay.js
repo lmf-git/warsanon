@@ -3,18 +3,30 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import WorldManager from 'lib/worldManager';
 
 import styles from '@components/Game/Map/SpawnOverlay/SpawnOverlay.module.css';
+import MapManager from 'lib/map/mapManager';
 
-export default function SpawnOverlay({ setOverlay }) {
+export default function SpawnOverlay({ setOverlay, setPosition }) {
     const [spawnChoice, setSpawnChoice] = useState(null);
     const [spawns, setSpawns] = useState([]);
 
     const onSpawnChange = (ev, spawn) => {
-        console.log(ev);
-        console.log(ev.target.value);
+        // Calculate the target chunk.
+        const chunk = {
+            x: Math.round(spawn.x / MapManager.chunkSize), 
+            y: Math.round(spawn.y / MapManager.chunkSize)
+        };
 
-        alert('Camera should move to spawn pos');
+        // Load the target chunk before moving there.
+        MapManager.addChunk(chunk.x, chunk.y);
+
+        // Update camera position.
+        setTimeout(() => setPosition({ x: spawn.x, y: spawn.y }), 0);
+
+        // Load the peripheral chunks.
+        // NOTE: Could show on the UI some tabs highlighting what's going on N/W/E/S directions.
 
         setSpawnChoice(spawn);
+
         return false;
     }
 
@@ -24,7 +36,6 @@ export default function SpawnOverlay({ setOverlay }) {
         // console.log(ev);
         // console.log(ev.target.value);
         // alert('Camera should move to spawn pos');
-
 
         setOverlay(null);
 
@@ -50,7 +61,7 @@ export default function SpawnOverlay({ setOverlay }) {
             // Close overlay after 3 seconds, basic test.
             // setOverlay(null);
         // }, 3000);
-    });
+    }, []);
 
 
 
@@ -71,6 +82,8 @@ export default function SpawnOverlay({ setOverlay }) {
                                 className={styles.label}
                                 htmlFor={`spawn-choice-${spawnIndex}`}>
                                 { spawn.name }
+                                &nbsp;
+                                { spawn.x }|{ spawn.y }
                             </label>
                         </div>
                     )
@@ -78,7 +91,9 @@ export default function SpawnOverlay({ setOverlay }) {
             </div>
             {
                 spawnChoice ?
-                    <button className={styles.confirm}>Spawn At {spawnChoice.name}</button>
+                    <button className={styles.confirm}>
+                        Spawn At {spawnChoice.name}
+                    </button>
                     :
                     null
             }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Head from 'next/head';
 import Link from 'next/link';
 
+import MapManager from '../lib/map/mapManager';
 import MapConfig from '../lib/map/mapConfig';
 import useProtected from "lib/useProtected";
 import useEntireScreen from "lib/map/useEntireScreen";
@@ -9,13 +10,14 @@ import useEntireScreen from "lib/map/useEntireScreen";
 import MapGUI from '@components/Game/Map/MapGUI';
 import SpawnOverlay from "@components/Game/Map/SpawnOverlay/SpawnOverlay";
 
-import styles from '@components/Game/Map/MapGUI.module.css';
 import Log from "@components/Game/Map/Log/Log";
 import Tooltip from "@components/Game/Map/Tooltip/Tooltip";
 
+import styles from '@components/Game/Map/MapGUI.module.css';
+
 export default function MapPage() {
   const [overlay, setOverlay] = useState(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 500, y: 500 });
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [chunks, setChunks] = useState([]);
@@ -27,8 +29,6 @@ export default function MapPage() {
   // Share to rest of client.
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
-
-  console.log(position);
 
   useProtected();
   useEntireScreen();
@@ -64,7 +64,8 @@ export default function MapPage() {
 
       <Log />
 
-      { overlay === 'spawn' ? <SpawnOverlay setOverlay={setOverlay} /> : null }
+      { overlay === 'spawn' ? <SpawnOverlay setPosition={setPosition} setOverlay={setOverlay} /> : null }
+      {/* { overlay === 'class' ? <ClassSelectOverlay setOverlay={setOverlay} /> : null } */}
     </div>
   </>
 }

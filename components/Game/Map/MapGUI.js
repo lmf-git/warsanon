@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import MapConfig from 'lib/map/mapConfig';
 import MapManager from 'lib/map/mapManager';
@@ -8,6 +8,7 @@ import { controlsListen, controlsUnlisten } from "lib/map/controls";
 import styles from '@components/Game/Map/MapGUI.module.css';
 
 export default function MapGUI({ setOverlay, chunks, position }) {
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         // TODO: Get this from game server.
@@ -15,7 +16,7 @@ export default function MapGUI({ setOverlay, chunks, position }) {
         NoiseHandler.initialise();
 
         // Bootstrap game.
-        MapManager.bootstrap(setOverlay);
+        MapManager.bootstrap(setOverlay, setOffset);
 
         // Attach controls.
         controlsListen();
@@ -29,11 +30,19 @@ export default function MapGUI({ setOverlay, chunks, position }) {
         }
     }, []);
 
+    // Chunk loader based on position updates.
+    useEffect(() => MapManager.chunking(), [position]);
+
+    const tileOffsetPerc = 50 + (100 / MapManager.chunkSize) / 2;
+
     return <div id="map" className={styles['map-wrapper']}>
+
+        <span className={styles['crosshair']}>X</span>
+
         <div id="viewport" className={styles['map-viewport']}
             style={{
-                top: `calc(${position.y} * 100%)`,
-                left: `calc(${position.x} * 100%)`,
+                top: `calc((${position.y} * 100%) - ${tileOffsetPerc}%)`,
+                left: `calc((${position.x} * 100%) - ${tileOffsetPerc}%)`,
             }}>
             { chunks.map((chunk, cI) => 
                 // TODO: Make into real class css module rule
@@ -41,12 +50,10 @@ export default function MapGUI({ setOverlay, chunks, position }) {
                     className={styles.chunk} key={`chunk-${cI}`}
                     style={MapManager.calcChunkScreenPos(chunk)}>
 
-                    {/* <span>X: {chunk.x} | Y: {chunk.y}</span> */}
-
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
                         <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
-                            {tile.y}|{tile.x}
+                            {tile.x}|{tile.y}
                         </div>
                     )}
                 </div>
