@@ -80,6 +80,9 @@
     opacity: 0;
     transition: opacity .2s, color .2s;
     opacity: 1;
+
+    border: 1px solid rgb(184, 184, 184);
+    box-sizing: border-box;
 }
 
 .tile:hover {

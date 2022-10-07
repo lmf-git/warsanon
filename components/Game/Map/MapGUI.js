@@ -27,6 +27,9 @@ export default function MapGUI({ setOverlay, chunks, position }) {
 
             // Remove resize handler.
             window.removeEventListener('resize', MapManager.resize);
+
+            // Reset loaded chunks.
+            MapConfig.chunksMeta = {};
         }
     }, []);
 
@@ -53,7 +56,7 @@ export default function MapGUI({ setOverlay, chunks, position }) {
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
                         <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
-                            {tile.x}|{tile.y}
+                            {/* {tile.x}|{tile.y} */}
                         </div>
                     )}
                 </div>
