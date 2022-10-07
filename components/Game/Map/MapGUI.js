@@ -33,12 +33,16 @@ export default function MapGUI({ setOverlay, chunks, position }) {
     // Chunk loader based on position updates.
     useEffect(() => MapManager.chunking(), [position]);
 
+    const tileOffsetPerc = 50 + (100 / MapManager.chunkSize) / 2;
+
     return <div id="map" className={styles['map-wrapper']}>
+
+        <span className={styles['crosshair']}>X</span>
+
         <div id="viewport" className={styles['map-viewport']}
             style={{
-                top: `calc(${position.y} * 100%)`,
-                left: `calc(${position.x} * 100%)`,
-                // transform: `translate(-${offset.x}px, -${offset.y}px)`
+                top: `calc((${position.y} * 100%) - ${tileOffsetPerc}%)`,
+                left: `calc((${position.x} * 100%) - ${tileOffsetPerc}%)`,
             }}>
             { chunks.map((chunk, cI) => 
                 // TODO: Make into real class css module rule

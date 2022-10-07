@@ -53,6 +53,18 @@
     height: 100%;
 }
 
+.crosshair {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    font-size: 2em;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
 .chunk {
     display: flex;
     position: absolute;
