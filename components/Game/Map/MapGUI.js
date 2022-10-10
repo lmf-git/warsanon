@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import MapConfig from 'lib/map/mapConfig';
+import MapConfig, { BIOMES } from 'lib/map/mapConfig';
 import MapManager from 'lib/map/mapManager';
 import NoiseHandler from "lib/map/noiseHandler";
 import { controlsListen, controlsUnlisten } from "lib/map/controls";
@@ -12,7 +12,7 @@ export default function MapGUI({ setOverlay, chunks, position }) {
 
     useEffect(() => {
         // TODO: Get this from game server.
-        MapConfig.seed = 2384832974;
+        MapConfig.seed = 9888499499429;
         NoiseHandler.initialise();
 
         // Bootstrap game.
@@ -55,7 +55,16 @@ export default function MapGUI({ setOverlay, chunks, position }) {
 
                     { chunk.tiles.map((tile, tI) => 
                         // TODO: Make into real class css module rule
-                        <div style={{ background: tile.biome }} className={styles.tile} key={`chunk-${tI}`}>
+                        <div 
+                            data-biome={tile.biome} 
+                            style={{ 
+                                background: BIOMES[tile.biome],
+                                border: tile.biome === 'OCEAN' ? 'none' : '',
+                                borderBottom: 'none',
+                                borderLeft: 'none'
+                            }} 
+                            className={styles.tile} 
+                            key={`chunk-${tI}`}>
                             {/* {tile.x}|{tile.y} */}
                         </div>
                     )}
