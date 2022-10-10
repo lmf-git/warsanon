@@ -1,7 +1,7 @@
 .header {
     display: flex;
     align-items: center;
-    padding: .5em;
+    padding: 1em;
     margin-bottom: 3em;
 }
 
@@ -56,8 +56,12 @@
     opacity: .75;
 }
 
+.infoPanels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 
-.roadmap-list {
-    /* max-height: 10em; */
-    /* overflow-y: scroll; */
+.roadmap {
+    flex: 50%;
 }

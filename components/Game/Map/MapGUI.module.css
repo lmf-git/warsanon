@@ -4,7 +4,7 @@
 }
 
 .map-window {
-    background: #1e1e1e;
+    background: rgb(67, 66, 120);
 }
 
 .map-branding {
@@ -80,6 +80,9 @@
     opacity: 0;
     transition: opacity .2s, color .2s;
     opacity: 1;
+
+    border: 1px solid rgb(40, 40, 40);
+    box-sizing: border-box;
 }
 
 .tile:hover {
