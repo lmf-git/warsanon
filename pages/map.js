@@ -14,19 +14,43 @@ import Log from "@components/Game/Map/Log/Log";
 import Tooltip from "@components/Game/Map/Tooltip/Tooltip";
 
 import styles from '@components/Game/Map/MapGUI.module.css';
+import { useRouter } from "next/router";
 
 export default function MapPage() {
+  const router = useRouter();
   const [overlay, setOverlay] = useState(null);
   const [position, setPosition] = useState({ x: 500, y: 500 });
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [chunks, setChunks] = useState([]);
 
+  useEffect(() => {
+    if (router.query.x || router.query.y) {
+      const { x, y } = router.query;
+      
+      const newPosition = {
+        x: parseInt(x) || position.x,
+        y: parseInt(y) || position.y,
+      };
+
+      setPosition(newPosition);
+
+        // Calculate the target chunk.
+        const chunk = {
+          x: Math.round(x / MapManager.chunkSize), 
+          y: Math.round(y / MapManager.chunkSize)
+      };
+
+      // Load the target chunk before moving there.
+      MapManager.addChunk(chunk.x, chunk.y);
+    }
+  }, [router]);
+
+  
   // Share rendering to React.
   MapConfig.viewport.chunks = chunks;
   MapConfig.viewport.setChunks = setChunks;
 
-  // Share to rest of client.
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
 
