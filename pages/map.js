@@ -34,15 +34,6 @@ export default function MapPage() {
       };
 
       setPosition(newPosition);
-
-        // Calculate the target chunk.
-        const chunk = {
-          x: Math.round(x / MapManager.chunkSize), 
-          y: Math.round(y / MapManager.chunkSize)
-      };
-
-      // Load the target chunk before moving there.
-      MapManager.addChunk(chunk.x, chunk.y);
     }
   }, [router]);
 
@@ -51,6 +42,7 @@ export default function MapPage() {
   MapConfig.viewport.chunks = chunks;
   MapConfig.viewport.setChunks = setChunks;
 
+  // Share to rest of client.
   MapConfig.viewport.position = position;
   MapConfig.viewport.setPosition = setPosition;
 
